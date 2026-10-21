@@ -25,7 +25,6 @@ The focus is **materials-data curation and workflow engineering**, rather than p
 - **Scientific focus:** sterilisation effects on thermoresponsive hydrogels
 - **Data types to audit:** rheology, sol–gel tests, polymer characterisation, 3D printing and biological evaluation
 
-Availability of raw SEM/TEM micrographs **has not been established** and will be checked during the source audit.
 
 ## Planned workflow
 
