@@ -6,6 +6,22 @@
 
 > **Central objective:** Convert heterogeneous experimental files into structured, quality-controlled and traceable materials datasets, while preserving the scientific meaning and limitations of the original measurements. This is a data-curation and workflow-engineering project, **not** a predictive polymer-design or machine-learning modelling study at this stage.
 
+## Quick navigation — Phase 0 publication
+
+The following Phase 0 file links use the canonical repository paths described in the [Phase 0 publication checkpoint](#phase-0-publication-checkpoint). **Repository file links become accessible after the corresponding artefacts have been committed to `main`.** The editable notebook is presently located at the repository root; the larger `notebooks/` directory shown later in this README remains a proposed structure for subsequent phases.
+
+- [Repository home](https://github.com/tehsongxuan/thermoresponsive-hydrogel-data-curation)
+- [Phase 0 — scientific scope and publication checkpoint](#phase-0-publication-checkpoint)
+- [Phase 0 — executable Jupyter notebook](https://github.com/tehsongxuan/thermoresponsive-hydrogel-data-curation/blob/main/00_scope_and_source_registry.ipynb)
+- [Phase 0 — scientific HTML report](https://github.com/tehsongxuan/thermoresponsive-hydrogel-data-curation/blob/main/reports/phase0/phase0_scientific_scope_report.html)
+- [View Phase 0 HTML report in a browser](https://htmlpreview.github.io/?https://github.com/tehsongxuan/thermoresponsive-hydrogel-data-curation/blob/main/reports/phase0/phase0_scientific_scope_report.html)
+- [Phase 0 — scientific figures and source-register links](#phase-0-output-inventory-and-direct-file-links)
+- [Phase 0 — reproducible local execution](#phase-0-environment-and-reproducibility)
+- [Original experimental paper](https://doi.org/10.1021/acs.biomac.6c01032)
+- [Original dataset and 13 source archives](https://zenodo.org/records/21902628)
+
+---
+
 ## 1. Research references and original data
 
 | Resource | Reference | Role in this project |
@@ -373,6 +389,116 @@ thermoresponsive-hydrogel-data-curation/
 
 **Phase status:** Source acquisition and preliminary archive inspection have been performed. The end-to-end pipeline and phase deliverables remain **planned / in development**, not completed or independently validated.
 
+## Phase 0 publication checkpoint
+
+**Checkpoint:** Phase 0 — Scientific Scope and Source Registry. This stage establishes a reproducible source-registration and scientific-scope baseline using the deposited data associated with *Impact of Sterilization Techniques on the Physicochemical and Biological Properties, and 3D Printability of Thermoresponsive Hydrogels*. It does not claim that SEC molar-mass distributions, NMR/FTIR peak assignments, gelation temperatures, viscoelastic curves, printed-strand geometry or biological outcomes have been independently reconstructed.
+
+### Phase 0 research references and original source
+
+| Resource | Reference | Scientific or workflow role |
+|---|---|---|
+| Experimental research article | [Nemati Mahand *et al.*, *Biomacromolecules* (2026)](https://doi.org/10.1021/acs.biomac.6c01032) · [ACS article page](https://pubs.acs.org/doi/10.1021/acs.biomac.6c01032) | Published experimental methods, chemical systems, reported treatments and study limitations. |
+| Original research deposit | [Zenodo 21902628](https://zenodo.org/records/21902628) · [Dataset DOI](https://doi.org/10.5281/zenodo.21902628) | Thirteen original experimental ZIP archives, maintained locally with unchanged original filenames. |
+| Research-data principles | [FAIR Guiding Principles](https://www.go-fair.org/fair-principles/) | Findable source descriptions, accessible provenance, interoperable metadata and reusable workflow design. |
+| GitHub publication guidance | [Adding files to a repository](https://docs.github.com/en/repositories/working-with-files/managing-files/adding-a-file-to-a-repository) | Version-controlled publication of code, figures and scientific documentation. |
+
+### Phase 0 scientific scope and implemented workflow
+
+Phase 0 connects polymer chemistry with source-aware data engineering through the following tasks:
+
+1. **Polymer architecture and thermoresponse.** Register Pluronic F127 (PEO–PPO–PEO), pMeOx-b-pnPrOzi and pMeOx-b-pPheOzi-b-pMeOx as distinct materials. Block composition, temperature-dependent assembly, inverse gelation and batch distinctions are scientific metadata, not interchangeable labels.
+2. **Experimental provenance.** Catalogue SEC/GPC, ¹H NMR, FTIR, rheology, sol–gel observations, 3D printing and biological-source archives. Preserve source filenames, checksums and archive-member counts while distinguishing digital records from independently prepared specimens.
+3. **Treatment-context registration.** Preserve control conditions, thermal, UV, ethanol and filtration treatments, including differences between polymer powders, solutions and formulated hydrogels where reported.
+4. **Scientific schema preparation.** Define preliminary metadata requirements for polymer identity, batch, concentration, solvent, processing, test temperature, heating/cooling direction, instrument settings, units and reporting provenance.
+5. **Quality-control design.** Identify rules for missing fields, incompatible numerical representations, ambiguous file-to-sample relationships, duplicate content and limitations of proprietary instrument formats.
+6. **Scientific visualisation.** Generate traceable archive-size and experimental-category figures alongside a conceptual structure–measurement–performance pathway. These figures describe data availability and workflow logic rather than newly analysed experimental measurements.
+7. **Reproducible workflow engineering.** Register inputs and outputs, record package versions, write stable artefact filenames and validate results using a clean Jupyter kernel.
+
+**Phase 0 execution evidence:** The submitted executed notebook registered 13 source archives and 1,119 archive members, produced 12 CSV/JSON output files and three PNG figures, and recorded 10 passed structural validation checks. These counts describe the digital archive and software checks; they do **not** demonstrate that 1,119 independent specimens or measurements were analysed. Fresh-kernel reproduction remains dependent on access to the same source archives and a compatible Python environment.
+
+### Phase 0 core notebook and HTML reports
+
+| Resource | Canonical repository location | Access |
+|---|---|---|
+| **Executable Python/Jupyter notebook** | `00_scope_and_source_registry.ipynb` | [Open Phase 0 notebook](https://github.com/tehsongxuan/thermoresponsive-hydrogel-data-curation/blob/main/00_scope_and_source_registry.ipynb) |
+| **Generated scientific scope report** | `reports/phase0/phase0_scientific_scope_report.html` | [Open HTML source](https://github.com/tehsongxuan/thermoresponsive-hydrogel-data-curation/blob/main/reports/phase0/phase0_scientific_scope_report.html) · [View rendered report in browser](https://htmlpreview.github.io/?https://github.com/tehsongxuan/thermoresponsive-hydrogel-data-curation/blob/main/reports/phase0/phase0_scientific_scope_report.html) |
+| **Executed notebook HTML export** (supplementary, if published) | `reports/phase0/00_scope_and_source_registry.html` | [Open executed HTML notebook](https://github.com/tehsongxuan/thermoresponsive-hydrogel-data-curation/blob/main/reports/phase0/00_scope_and_source_registry.html) · [View rendered notebook in browser](https://htmlpreview.github.io/?https://github.com/tehsongxuan/thermoresponsive-hydrogel-data-curation/blob/main/reports/phase0/00_scope_and_source_registry.html) |
+
+The Jupyter notebook contains the executable Python cells and scientific explanations. The generated scope report provides a concise reader-oriented summary. The executed notebook export, if included, additionally displays the complete code-and-output record. Browser rendering uses a third-party HTML preview service; the corresponding GitHub links remain the canonical references. All figures used by the generated scientific report are expected under `figures/phase0/` so relative image paths can resolve.
+
+### Phase 0 output inventory and direct file links
+
+The following paths correspond to outputs of the Phase 0 notebook. File links are **publication targets, not a statement that the files are already present on GitHub**. Only reviewed outputs should be committed after source-reuse and private-local-path checks.
+
+#### A. Scientific source and metadata registers
+
+| Scientific record | Direct GitHub file link | Role |
+|---|---|---|
+| `source_registry.csv` | [Open file](https://github.com/tehsongxuan/thermoresponsive-hydrogel-data-curation/blob/main/data/processed/phase0/source_registry.csv) | Source publication, Zenodo DOI and data-origin register. |
+| `archive_registry.csv` | [Open file](https://github.com/tehsongxuan/thermoresponsive-hydrogel-data-curation/blob/main/data/processed/phase0/archive_registry.csv) | Thirteen original ZIP archives, scientific categories, sizes and member counts. |
+| `polymer_system_register.csv` | [Open file](https://github.com/tehsongxuan/thermoresponsive-hydrogel-data-curation/blob/main/data/processed/phase0/polymer_system_register.csv) | Polymer identity, block architecture and thermoresponsive context. |
+| `published_batch_descriptions.csv` | [Open file](https://github.com/tehsongxuan/thermoresponsive-hydrogel-data-curation/blob/main/data/processed/phase0/published_batch_descriptions.csv) | Publication-derived polymer-batch descriptions; not newly measured batches. |
+| `published_treatment_register.csv` | [Open file](https://github.com/tehsongxuan/thermoresponsive-hydrogel-data-curation/blob/main/data/processed/phase0/published_treatment_register.csv) | Documented sterilisation treatments, stages and reported conditions. |
+| `experimental_technique_register.csv` | [Open file](https://github.com/tehsongxuan/thermoresponsive-hydrogel-data-curation/blob/main/data/processed/phase0/experimental_technique_register.csv) | Characterisation methods, expected evidence and acquisition context. |
+| `research_questions.csv` | [Open file](https://github.com/tehsongxuan/thermoresponsive-hydrogel-data-curation/blob/main/data/processed/phase0/research_questions.csv) | Scientific questions connecting polymer chemistry, processing and evidence. |
+| `metadata_requirements.csv` | [Open file](https://github.com/tehsongxuan/thermoresponsive-hydrogel-data-curation/blob/main/data/processed/phase0/metadata_requirements.csv) | Candidate scientific metadata, units and data-validation expectations. |
+| `preliminary_qc_rules.csv` | [Open file](https://github.com/tehsongxuan/thermoresponsive-hydrogel-data-curation/blob/main/data/processed/phase0/preliminary_qc_rules.csv) | Preliminary, reviewable quality-control checks. |
+| `phase0_input_verification.csv` | [Open file](https://github.com/tehsongxuan/thermoresponsive-hydrogel-data-curation/blob/main/data/processed/phase0/phase0_input_verification.csv) | Archive file-identity checks and input integrity. |
+| `phase0_run_manifest.json` | [Open file](https://github.com/tehsongxuan/thermoresponsive-hydrogel-data-curation/blob/main/data/processed/phase0/phase0_run_manifest.json) | Processing provenance, source references and software versions. |
+| `phase0_validation_summary.csv` | [Open file](https://github.com/tehsongxuan/thermoresponsive-hydrogel-data-curation/blob/main/data/processed/phase0/phase0_validation_summary.csv) | Phase 0 structural and output-validation results. |
+
+#### B. Phase 0 scientific visualisations
+
+| Figure | Direct GitHub figure link | Interpretation |
+|---|---|---|
+| `phase0_archive_sizes.png` | [View figure](https://github.com/tehsongxuan/thermoresponsive-hydrogel-data-curation/blob/main/figures/phase0/phase0_archive_sizes.png) | Compressed-source archive-size comparison; size does not indicate independent sample count. |
+| `phase0_scientific_category_coverage.png` | [View figure](https://github.com/tehsongxuan/thermoresponsive-hydrogel-data-curation/blob/main/figures/phase0/phase0_scientific_category_coverage.png) | File-category representation across polymer-characterisation and application evidence. |
+| `phase0_scientific_evidence_pathway.png` | [View figure](https://github.com/tehsongxuan/thermoresponsive-hydrogel-data-curation/blob/main/figures/phase0/phase0_scientific_evidence_pathway.png) | Conceptual relationship between polymer architecture, treatment, experimental characterisation and material performance; not a verified specimen-level linkage. |
+
+The figures must be interpreted with their dataset, measurement and sample-level limitations. File-count charts do not establish representative experimental sampling. The conceptual evidence pathway illustrates the intended scientific data model and is not a confirmed same-specimen provenance graph.
+
+### Phase 0 environment and reproducibility
+
+The locally configured environment is named **`Python (Thermogel Phase 0)`** and corresponds to the Conda environment `thermogel-phase0`. The project uses Python and scientific packages including pandas, NumPy, Matplotlib, Jupyter/ipykernel and nbclient. Package compatibility must be checked within the selected environment; installing into the unrelated Anaconda base environment is not required.
+
+- [Project dependency specification](https://github.com/tehsongxuan/thermoresponsive-hydrogel-data-curation/blob/main/requirements.txt) — dependency manifest for a reproducible installation, when added to the repository.
+- [Git exclusion rules](https://github.com/tehsongxuan/thermoresponsive-hydrogel-data-curation/blob/main/.gitignore) — prevents large raw archives, temporary outputs, checkpoints and private environment artefacts from being inadvertently committed, when added to the repository.
+
+The executable Phase 0 notebook currently resides at the **repository root**, consistent with the working Jupyter directory. The separate `notebooks/` layout in the earlier proposed repository plan can be adopted later, provided the published notebook link and any relative paths are updated together.
+
+**Required local source layout:**
+
+```text
+thermoresponsive-hydrogel-data-curation/
+├── README.md
+├── 00_scope_and_source_registry.ipynb
+├── data/
+│   ├── raw/
+│   │   └── zenodo_21902628/
+│   │       └── [the 13 original Zenodo ZIP archives, unchanged]
+│   └── processed/
+│       └── phase0/
+│           └── [generated CSV and JSON records]
+├── figures/
+│   └── phase0/
+│       └── [three generated PNG figures]
+└── reports/
+    └── phase0/
+        └── phase0_scientific_scope_report.html
+```
+
+**Execution procedure:** Open `00_scope_and_source_registry.ipynb`, select **Python (Thermogel Phase 0)**, and run **Kernel → Restart Kernel and Run All Cells**. The 13 original ZIP files must remain in `data/raw/zenodo_21902628/`. Execution should regenerate the declared named outputs without relying on previously defined notebook variables or manually extracted source archives. The `phase0_validation_summary.csv` and `phase0_run_manifest.json` should be reviewed after each run; software validation does not establish the experimental validity of unpublished measurements or cross-technique physical-sample relationships.
+
+### Phase 0 GitHub publication guidance
+
+The initial public checkpoint comprises the updated `README.md`, the single canonical Jupyter notebook, the generated scientific report, three independently created Phase 0 figures and the documented environment. The supporting Phase 0 CSV/JSON registers are linkable and useful for scientific transparency **after their content, source permissions and local-path exposure have been reviewed**. Public-access status must not be confused with permission to redistribute third-party deposited files.
+
+The **13 original Zenodo ZIP files** are intentionally not reproduced in the GitHub repository. The associated journal PDF, source image collections, raw proprietary instrument projects, downloaded software environments and notebook checkpoint directories likewise remain local unless reuse permission and publication necessity are established. All source records remain attributable to their original researchers via the DOI references above.
+
+**Phase 0 handoff:** The registered sources, metadata requirements, treatment definitions, preliminary QC rules and documented limitations establish the starting point for **Phase 1 — Source Archive Audit**. Later phases may implement full archive-member inventories, scientific schema mapping, verified numerical extraction, imaging quality control and evidence-led links, without treating matching filenames as proof of specimen identity.
+
+---
+
 ## 15. Known limitations and scientific safeguards
 
 1. **Proprietary projects:** OriginLab `.opju` files may require authorised Origin export or a proven compatible extraction method. A preview graph is not equivalent to a validated numeric export.
@@ -409,3 +535,5 @@ Future work could extend the approach to appropriately sourced **SEM, TEM, cryo-
 This independent project uses data deposited by **Saba Nemati Mahand, Saumya Palliyawaththage, J. Maurice Pütz, Parsa Amin, Ekaterina Takmakova and Robert Luxenhofer**, with the related findings published in *Biomacromolecules* (2026).
 
 Please cite the **[original article](https://doi.org/10.1021/acs.biomac.6c01032)** and **[Zenodo dataset](https://doi.org/10.5281/zenodo.21902628)** when using the original research materials. Scientific credit for the experiments and source datasets remains with their authors.
+
+
