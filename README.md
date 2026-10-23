@@ -13,12 +13,15 @@ The following Phase 0 file links use the canonical repository paths described in
 - [Repository home](https://github.com/tehsongxuan/thermoresponsive-hydrogel-data-curation)
 - [Phase 0 — scientific scope and publication checkpoint](#phase-0-publication-checkpoint)
 - [Phase 0 — executable Jupyter notebook](https://github.com/tehsongxuan/thermoresponsive-hydrogel-data-curation/blob/main/00_scope_and_source_registry.ipynb)
-- [Phase 0 — scientific HTML report](https://github.com/tehsongxuan/thermoresponsive-hydrogel-data-curation/blob/main/reports/phase0/phase0_scientific_scope_report.html)
-- [View Phase 0 HTML report in a browser](https://htmlpreview.github.io/?https://github.com/tehsongxuan/thermoresponsive-hydrogel-data-curation/blob/main/reports/phase0/phase0_scientific_scope_report.html)
+- [Phase 0 — scientific HTML report](https://github.com/tehsongxuan/thermoresponsive-hydrogel-data-curation/blob/main/reports/phase0/00_scope_and_source_registry.html)
+- [View Phase 0 HTML report in a browser](https://htmlpreview.github.io/?https://github.com/tehsongxuan/thermoresponsive-hydrogel-data-curation/blob/main/reports/phase0/00_scope_and_source_registry.html)
+
 - [Phase 0 — scientific figures and source-register links](#phase-0-output-inventory-and-direct-file-links)
 - [Phase 0 — reproducible local execution](#phase-0-environment-and-reproducibility)
 - [Original experimental paper](https://doi.org/10.1021/acs.biomac.6c01032)
 - [Original dataset and 13 source archives](https://zenodo.org/records/21902628)
+
+**Phase 0 HTML link note:** Both links above open the uploaded `reports/phase0/00_scope_and_source_registry.html` file. The first opens the GitHub file page; the second renders the same HTML through an external HTML preview service.
 
 ---
 
@@ -421,10 +424,10 @@ Phase 0 connects polymer chemistry with source-aware data engineering through th
 | Resource | Canonical repository location | Access |
 |---|---|---|
 | **Executable Python/Jupyter notebook** | `00_scope_and_source_registry.ipynb` | [Open Phase 0 notebook](https://github.com/tehsongxuan/thermoresponsive-hydrogel-data-curation/blob/main/00_scope_and_source_registry.ipynb) |
-| **Generated scientific scope report** | `reports/phase0/phase0_scientific_scope_report.html` | [Open HTML source](https://github.com/tehsongxuan/thermoresponsive-hydrogel-data-curation/blob/main/reports/phase0/phase0_scientific_scope_report.html) · [View rendered report in browser](https://htmlpreview.github.io/?https://github.com/tehsongxuan/thermoresponsive-hydrogel-data-curation/blob/main/reports/phase0/phase0_scientific_scope_report.html) |
-| **Executed notebook HTML export** (supplementary, if published) | `reports/phase0/00_scope_and_source_registry.html` | [Open executed HTML notebook](https://github.com/tehsongxuan/thermoresponsive-hydrogel-data-curation/blob/main/reports/phase0/00_scope_and_source_registry.html) · [View rendered notebook in browser](https://htmlpreview.github.io/?https://github.com/tehsongxuan/thermoresponsive-hydrogel-data-curation/blob/main/reports/phase0/00_scope_and_source_registry.html) |
+| **Published Phase 0 HTML report (executed notebook export)** | `reports/phase0/00_scope_and_source_registry.html` | [Open HTML source](https://github.com/tehsongxuan/thermoresponsive-hydrogel-data-curation/blob/main/reports/phase0/00_scope_and_source_registry.html) · [View rendered report in browser](https://htmlpreview.github.io/?https://github.com/tehsongxuan/thermoresponsive-hydrogel-data-curation/blob/main/reports/phase0/00_scope_and_source_registry.html) |
+| **Separate generated scientific scope summary** (not yet published) | `reports/phase0/phase0_scientific_scope_report.html` | Generated summary remains separate from the executed notebook HTML; a direct link should be enabled after that file is uploaded. |
 
-The Jupyter notebook contains the executable Python cells and scientific explanations. The generated scope report provides a concise reader-oriented summary. The executed notebook export, if included, additionally displays the complete code-and-output record. Browser rendering uses a third-party HTML preview service; the corresponding GitHub links remain the canonical references. All figures used by the generated scientific report are expected under `figures/phase0/` so relative image paths can resolve.
+The Jupyter notebook contains the executable Python cells and scientific explanations. The published `00_scope_and_source_registry.html` file is the executed notebook export, displaying the code, outputs and scientific interpretation. The separately generated `phase0_scientific_scope_report.html` is a distinct scientific summary and is not linked as published until uploaded. Browser rendering uses a third-party HTML preview service; the corresponding GitHub links remain the canonical references. All figures used by the generated scientific report are expected under `figures/phase0/` so relative image paths can resolve.
 
 ### Phase 0 output inventory and direct file links
 
@@ -484,7 +487,8 @@ thermoresponsive-hydrogel-data-curation/
 │       └── [three generated PNG figures]
 └── reports/
     └── phase0/
-        └── phase0_scientific_scope_report.html
+        ├── 00_scope_and_source_registry.html      # published executed notebook HTML
+        └── phase0_scientific_scope_report.html # separately generated summary, when uploaded
 ```
 
 **Execution procedure:** Open `00_scope_and_source_registry.ipynb`, select **Python (Thermogel Phase 0)**, and run **Kernel → Restart Kernel and Run All Cells**. The 13 original ZIP files must remain in `data/raw/zenodo_21902628/`. Execution should regenerate the declared named outputs without relying on previously defined notebook variables or manually extracted source archives. The `phase0_validation_summary.csv` and `phase0_run_manifest.json` should be reviewed after each run; software validation does not establish the experimental validity of unpublished measurements or cross-technique physical-sample relationships.
@@ -535,5 +539,3 @@ Future work could extend the approach to appropriately sourced **SEM, TEM, cryo-
 This independent project uses data deposited by **Saba Nemati Mahand, Saumya Palliyawaththage, J. Maurice Pütz, Parsa Amin, Ekaterina Takmakova and Robert Luxenhofer**, with the related findings published in *Biomacromolecules* (2026).
 
 Please cite the **[original article](https://doi.org/10.1021/acs.biomac.6c01032)** and **[Zenodo dataset](https://doi.org/10.5281/zenodo.21902628)** when using the original research materials. Scientific credit for the experiments and source datasets remains with their authors.
-
-
