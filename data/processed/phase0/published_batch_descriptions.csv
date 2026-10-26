@@ -1,0 +1,5 @@
+﻿registry_key,polymer_key,published_description,block_composition,mn_sec_kg_mol,dispersity_sec,treatment_context,is_physical_sample_id,source_reference
+BATCH-DESCRIPTION-01,POL-01,Commercial Pluronic F127; supplier BASF; purchased product reported as 12.6 kg/mol,PEO–PPO–PEO,,,Commercial material; original batch code not established,False,"Article, Materials and Methods, p. 2"
+BATCH-DESCRIPTION-02,POL-02,First synthesised diblock batch; ethyl isonipecotate terminated,pMeOx100-b-pnPrOzi121,32.0,1.17,"Control, autoclave, dry heat, anaerobic dry heat, ethanol and UV study groups",False,"Article, Materials and Methods, p. 2"
+BATCH-DESCRIPTION-03,POL-02,Second synthesised diblock batch; potassium acetate terminated,pMeOx115-b-pnPrOzi128,29.2,1.23,Filtration study group,False,"Article, Materials and Methods, p. 2"
+BATCH-DESCRIPTION-04,POL-03,Synthesised inverse-thermogel triblock described in methods,pMeOx42-b-pPheOzi13-b-pMeOx42,16.1,1.15,Experiment-dependent; physical-sample IDs not established,False,"Article, Materials and Methods, p. 2"

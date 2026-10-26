@@ -1,0 +1,10 @@
+﻿treatment_key,treatment_name,reported_conditions,stage_note,source_reference
+TRT-CTRL,Untreated control,No sterilisation treatment,Stage-dependent; original specimens not uniquely identified,"Article, Materials and Methods, pp. 2–3"
+TRT-AUTO,Autoclaving,"121 °C, 16 psi, 30 min (main described procedure)",Paper also discusses formulated hydrogels separately,"Article, Materials and Methods, p. 2"
+TRT-DRY,Aerobic dry heat,"150 °C, 180 min (main described procedure)",Polymer precursor treatment; stage must be verified per record,"Article, Materials and Methods, p. 2"
+TRT-ANHY,Anaerobic dry heat,"150 °C, 180 min under vacuum (main described procedure)",Conditions may differ in supplementary experiments,"Article, Materials and Methods, p. 2"
+TRT-ETOH,Ethanol wash,70 wt.% ethanol with evaporation step,Residual ethanol is a possible study variable; do not assume complete removal,"Article, Materials and Methods, p. 2"
+TRT-UV,UV irradiation,"254 nm, 60 min (main described procedure)",Powder and formulated-hydrogel UV experiments are not interchangeable,"Article, Materials and Methods, p. 2"
+TRT-FILT,Filtration,"Main protocol: 0.2 µm nylon membrane, aqueous polymer solution",Repeated filtration was evaluated separately,"Article, Materials and Methods, pp. 2, 11"
+TRT-MULTI,Repeated filtration,Three filtration passes discussed; protocol-specific conditions require review,Not equivalent to single filtration,"Article, Results and Discussion, p. 11"
+TRT-COMB,Autoclaving followed by repeated filtration,Combined treatment investigated in supplementary experiments,Treatment order is essential metadata,"Article, Results and Discussion, p. 11"

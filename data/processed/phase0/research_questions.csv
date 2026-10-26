@@ -1,0 +1,14 @@
+﻿question_key,research_question,scientific_concept,potential_evidence,required_data_engineering,analysis_status
+RQ-01,Which original sources and scientific techniques are represented?,Source provenance and archive inventory,All archives,"File registration, category counts",phase0_initial
+RQ-02,Are polymer batches distinguished across treatment groups?,"Architecture, molar mass, batch effects",Paper; NMR; SEC,Batch-aware schema and source linkage,requires_phase2_linkage
+RQ-03,Does dry-heat processing change molar-mass distributions?,"Chain scission, polymer degradation",SEC,"Comparable chromatograms, calibration and treatment conditions",requires_phase3
+RQ-04,Do NMR spectra support compositional differences after treatment?,Chemical environment and molecular structure,¹H NMR,"Spectrum handling, assignments and processing provenance",requires_phase3
+RQ-05,Are IR features consistent with chemical changes?,Vibrations and functional groups,FTIR,"Unit-aware spectra, baseline and controls",requires_phase3
+RQ-06,How does gel response depend on temperature and test history?,Thermogelation and chain association,Rheology; sol–gel,"Temperature, sweep direction, strain and concentration",requires_phase4
+RQ-07,How does viscosity respond to shear rate?,Shear thinning of transient networks,Rheology,"Shear protocol, units and valid fitting ranges",requires_phase4
+RQ-08,Does the hydrogel recover its properties after high shear?,Reformation of reversible physical associations,Rheology,Time-resolved experiment metadata and recovery definition,requires_phase4
+RQ-09,Can printed pore geometry be measured reproducibly?,Extrusion rheology and shape fidelity,Printing images,"Image scale, segmentation validation and treatment labels",requires_phase5
+RQ-10,Are sterilisation-screening images traceable to experimental conditions?,Treatment efficacy and biological uncertainty,Screening images,"Treatment conditions, observation date and image linkage",requires_phase5
+RQ-11,Are published biological endpoints represented without censoring errors?,Cytocompatibility and assay interpretation,Article results; biological assays,"Treatment, incubation and bound-preserving IC50 fields",requires_phase6
+RQ-12,Can characterisation and printing outcomes be linked to the same specimen?,Structure–property evidence integration,All relevant sources,Verified specimen IDs and provenance,unresolved_until_verified
+RQ-13,Can the workflow reproduce source statistics and QC outputs?,Reliable research-data management,All 13 archives,Fresh-kernel execution and deterministic outputs,phase0_and_later
