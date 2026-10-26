@@ -1,0 +1,115 @@
+{
+  "phase": "Phase 0 — Scientific Scope and Source Registry",
+  "status": "source_registry_verified; numerical_characterisation_not_performed",
+  "source_dataset_doi": "https://doi.org/10.5281/zenodo.21902628",
+  "experimental_article_doi": "https://doi.org/10.1021/acs.biomac.6c01032",
+  "software_versions": {
+    "python": "3.11.17",
+    "pandas": "3.0.6",
+    "numpy": "1.26.4",
+    "matplotlib": "3.11.1"
+  },
+  "input_archives": [
+    {
+      "original_filename": "Figure 2b,c,d-SEC.zip",
+      "sha256": "913bebf9df46346ea5b71ca9ee318ea6f29655ce1dd2659a1ee4317073c5138d",
+      "archive_size_bytes": 898027,
+      "internal_file_entries": 6
+    },
+    {
+      "original_filename": "Figure S16-SEC.zip",
+      "sha256": "2c23c5ff283c677e898c7b58397fe686fd5e5e36c0dc0efae8e45902bd2fec4f",
+      "archive_size_bytes": 213933,
+      "internal_file_entries": 3
+    },
+    {
+      "original_filename": "Figure S2,3,4,11-1H NMR.zip",
+      "sha256": "9a1dda8ab20bbedef37c0b145f877a251a5b6acb2b76230a15d8094d75b2ab75",
+      "archive_size_bytes": 52440790,
+      "internal_file_entries": 755
+    },
+    {
+      "original_filename": "Figure S5,6,7-FTIR.zip",
+      "sha256": "37e46fc0cd12ebfb6f2ca0a0bb617649c1275fd6adf1db408b77d8fa7673e866",
+      "archive_size_bytes": 7376745,
+      "internal_file_entries": 64
+    },
+    {
+      "original_filename": "Figure3,4,5, and S8-Rheology data.zip",
+      "sha256": "c66e632c6e88887e72c0ad62820586b9be005ad01010d235e6cfdee908357349",
+      "archive_size_bytes": 2507567,
+      "internal_file_entries": 15
+    },
+    {
+      "original_filename": "Figure S1 and 2b-Solgel transitions.zip",
+      "sha256": "29eb8d0a9845f9097efec91e3e8d5b23a9c11060cdb643568cbe835fc2fb1f54",
+      "archive_size_bytes": 17215127,
+      "internal_file_entries": 8
+    },
+    {
+      "original_filename": "Figure S9,10, and 6.zip",
+      "sha256": "dbdb5ded2cc2189fe6b6427aebb8a6a027a4adde39ab30b3b4a72e279ad9e333",
+      "archive_size_bytes": 112217047,
+      "internal_file_entries": 116
+    },
+    {
+      "original_filename": "Figure S21-Printing.zip",
+      "sha256": "229b3f93385d1c911568b8c8f5e4760c3c9dc72e8bce6afdcdf3fc16fa37c9cb",
+      "archive_size_bytes": 14535560,
+      "internal_file_entries": 17
+    },
+    {
+      "original_filename": "Figure S 12,13,14-Bacterial gwroth test.zip",
+      "sha256": "3f20625c3f8cc965779b009cb991a20769c61b48da97d49821834ffa86b3cef0",
+      "archive_size_bytes": 9582032,
+      "internal_file_entries": 61
+    },
+    {
+      "original_filename": "Figure S15-Bacterial growth after 3time Filtration.zip",
+      "sha256": "0a445cc18fda3c86dee83b6789a4595fad60284abcaabc1938db6b105a9472c7",
+      "archive_size_bytes": 1592944,
+      "internal_file_entries": 11
+    },
+    {
+      "original_filename": "Figure S17-Autoclave followed by filtration.zip",
+      "sha256": "a234b2afbd26a5f8fec7c2f67417ecd62277c11543f78c46454c99aa51ca3330",
+      "archive_size_bytes": 1209378,
+      "internal_file_entries": 8
+    },
+    {
+      "original_filename": "Figure S18.zip",
+      "sha256": "5b30779367702821045aeab51f01e88cc27583eda3ce77dbb31a87c7e19b0042",
+      "archive_size_bytes": 21411627,
+      "internal_file_entries": 5
+    },
+    {
+      "original_filename": "Figure S19,20,22-Sterilization of hydrogels by UV.zip",
+      "sha256": "98527393d78d43b8d0df1433e24719dbb76c1458d72d4f92df7b2ee1fd352b40",
+      "archive_size_bytes": 3821257,
+      "internal_file_entries": 50
+    }
+  ],
+  "processed_tables": [
+    "data/processed/phase0/source_registry.csv",
+    "data/processed/phase0/archive_registry.csv",
+    "data/processed/phase0/polymer_system_register.csv",
+    "data/processed/phase0/published_batch_descriptions.csv",
+    "data/processed/phase0/published_treatment_register.csv",
+    "data/processed/phase0/experimental_technique_register.csv",
+    "data/processed/phase0/research_questions.csv",
+    "data/processed/phase0/metadata_requirements.csv",
+    "data/processed/phase0/preliminary_qc_rules.csv",
+    "data/processed/phase0/phase0_input_verification.csv"
+  ],
+  "figures": [
+    "figures/phase0/phase0_archive_sizes.png",
+    "figures/phase0/phase0_scientific_category_coverage.png",
+    "figures/phase0/phase0_scientific_evidence_pathway.png"
+  ],
+  "limitations": [
+    "File entry counts are not independent experimental replicate counts.",
+    "Physical-sample linkage is not verified.",
+    "Spectroscopy and rheology instrument measurements are not yet numerically standardised.",
+    "Original dataset redistribution rights must be verified before publication."
+  ]
+}
