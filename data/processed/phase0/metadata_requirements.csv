@@ -1,0 +1,36 @@
+﻿field_name,expected_data_type,expected_unit,applies_to,priority,scientific_justification,proposed_python_validation,source_field_availability
+polymer_name,str,none,all,required,Distinguishes chemically different materials,non-empty category and controlled vocabulary,not_validated_in_phase0
+polymer_architecture,str,none,all,required,Blocks control solvation and polymer association,validated block architecture labels,not_validated_in_phase0
+polymer_batch,str,none,all,required_if_reported,Separates potentially different molecular populations,"blank remains unresolved, no invented identifier",not_validated_in_phase0
+block_composition,str,none,NMR/SEC and formulation,recommended,Composition can shift gelation and molecular interactions,validate source-described formula notation,not_validated_in_phase0
+mn_value,float,g/mol or kg/mol,SEC and NMR,technique_specific,Chain-size summaries relate to assembly and degradation,check numeric and method-labelled unit,not_validated_in_phase0
+mw_value,float,g/mol or kg/mol,SEC,technique_specific,Sensitive to high-molar-mass populations,validate finite and positive,not_validated_in_phase0
+dispersity,float,dimensionless,SEC,technique_specific,Distribution breadth is important for polymer characterisation,positive and physically credible where defined,not_validated_in_phase0
+polymer_concentration,float,wt.% or specified units,rheology and printing,required,Concentration controls network formation and rheological response,retain source units and concentration definition,not_validated_in_phase0
+solvent_medium,str,none,formulation and techniques,required,Solvent and salt change hydration and interactions,controlled terms plus original text,not_validated_in_phase0
+sample_state,str,none,treatment and rheology,required,"Powder, solution and formulated hydrogel behave differently",valid controlled stage categories,not_validated_in_phase0
+treatment_method,str,none,treatment,required,Different methods can cause different chemical changes,controlled vocabulary with original label,not_validated_in_phase0
+treatment_sequence,str,none,treatment,required_if_reported,Order matters for combined treatment,preserve ordered steps,not_validated_in_phase0
+treatment_temperature,float,°C,thermal treatments,technique_specific,Thermal exposure affects chain stability,numeric plus source unit,not_validated_in_phase0
+treatment_duration,float,min,treatments,technique_specific,Exposure time affects process outcome,nonnegative numeric with conversion log,not_validated_in_phase0
+instrument_model,str,none,instrument data,recommended,Instrument conditions constrain comparability,source-recorded identifiers only,not_validated_in_phase0
+acquisition_date,str,ISO date if available,instrument data,recommended,Controls could be measured at different times,parse only when evidence exists,not_validated_in_phase0
+sample_identifier,str,none,measurement,required_if_reported,Necessary to join the same physical sample,never derive physical ID from filenames,not_validated_in_phase0
+replicate_type,str,none,measurement/assay,required_if_reported,Prevents pseudoreplication,biological versus technical categories,not_validated_in_phase0
+measurement_temperature,float,°C,SEC/rheology/NMR,technique_specific,Influences solvation and viscoelastic state,retain measurement versus treatment temperature,not_validated_in_phase0
+heating_cooling_direction,str,none,thermal sweep,required,Inverse thermogels must be interpreted by direction,validate heating versus cooling,not_validated_in_phase0
+ramp_rate,float,°C/min,thermal sweep,required_if_reported,Changes observed transition path,numeric and correct unit,not_validated_in_phase0
+rheometer_geometry,str,none,rheology,technique_specific,Geometry influences stress and modulus interpretation,verify type and plate dimension,not_validated_in_phase0
+oscillation_frequency,float,rad/s or Hz,rheology,technique_specific,Viscoelastic response depends on measurement timescale,preserve angular versus ordinary frequency,not_validated_in_phase0
+oscillation_strain,float,% or fraction,rheology,technique_specific,Linear response depends on strain,preserve percent versus fraction,not_validated_in_phase0
+storage_modulus,float,Pa,rheology,technique_specific,Quantifies elastic response,numeric with calibrated measurement context,not_validated_in_phase0
+loss_modulus,float,Pa,rheology,technique_specific,Quantifies energy-dissipating response,numeric with calibrated measurement context,not_validated_in_phase0
+ftir_wavenumber,float,cm⁻¹,FTIR,technique_specific,Identifies vibrational spectral coordinate,numeric and ordered axis,not_validated_in_phase0
+ftir_signal_representation,str,%T or Abs,FTIR,required,Transmittance and absorbance are not directly identical,reject unlabelled cross-representation overlays,not_validated_in_phase0
+nmr_chemical_shift,float,ppm,NMR,technique_specific,Locates proton resonances,requires reference and acquisition metadata,not_validated_in_phase0
+image_resolution,str,pixels,images,recommended,Determines imaging suitability for automated measurement,positive width and height,not_validated_in_phase0
+image_physical_scale,float,µm/pixel or mm/pixel,quantitative images,required,Needed for physical dimensions and validated segmentation,do not invent physical scale,not_validated_in_phase0
+ic50_qualifier,str,"<, >, exact",biological assays,technique_specific,Bounded results must not become exact measurements,retain inequality semantics,not_validated_in_phase0
+source_file_path,str,relative path,all,required,Enables complete provenance,original archive and internal path,not_validated_in_phase0
+value_origin,str,"source_measured, source_reported, calculated",numeric records,required,Distinguishes measurement from reported and derived values,controlled evidence classification,not_validated_in_phase0
+uncertainty_method,str,none,summarised results,required_if_reported,Scientific variability affects interpretation,retain SD/SE/CI and replicate definitions,not_validated_in_phase0

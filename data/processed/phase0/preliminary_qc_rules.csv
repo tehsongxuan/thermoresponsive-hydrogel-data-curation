@@ -1,0 +1,21 @@
+﻿qc_rule_key,qc_category,rule_or_review_question,planned_phase,priority,response
+QC-001,Archive availability,13 exact deposited ZIP archives exist,Phase 0,error,Verify original filenames; stop if missing
+QC-002,ZIP CRC integrity,Each deposited ZIP passes archive integrity test,Phase 0,error,Stop processing on corrupt input
+QC-003,Source checksum,Record SHA-256 for each original ZIP,Phase 0,review,Treat checksums as provenance not sample IDs
+QC-004,File-count interpretation,Source entries are not equivalent to independent experiments,Phase 0,warning,Label all inventory summaries explicitly
+QC-005,Original paths,Retain exact source names and relative location,Phase 0,error,Do not silently rename or correct source files
+QC-006,Proprietary format,OriginLab project requires verified numeric extraction,Later,review,Do not infer data from a plotted curve
+QC-007,Polymer identity,Each measurement needs a source-supported polymer label,Later,error,Keep unresolved if unverified
+QC-008,Batch identity,Different synthesised batches cannot be silently joined,Later,error,Preserve separate batch records
+QC-009,Treatment stage,"Powder, solution and preformed gel treatments differ",Later,warning,Record formulation stage
+QC-010,Treatment sequence,Repeated and combined treatment sequence matters,Later,warning,Preserve treatment order
+QC-011,FTIR signal representation,%T and absorbance must be differentiated,Later,error,Document conversions; retain original values
+QC-012,SEC calibration,Elution-time traces need applicable calibration for molar mass,Later,error,Maintain acquisition and calibration context
+QC-013,Rheology thermal history,"Heating, cooling and equilibration affect thermogelation",Later,warning,"Record direction, ramp and conditions"
+QC-014,Rheology measurement timescale,Strain and frequency control viscoelastic interpretation,Later,warning,Preserve angular frequency and strain units
+QC-015,Image physical scale,Optical-image geometry needs physical calibration,Later,error,Avoid unsupported dimensions
+QC-016,IC50 threshold,< and > results are bounded not exact,Later,error,Retain original qualifier
+QC-017,Replicate hierarchy,Image or spectral points are not independent biological samples,Later,warning,Preserve technical/biological replicate hierarchy
+QC-018,Physical-sample linkage,Filenames alone cannot establish shared specimen identity,Later,error,"Record confirmed, candidate and unresolved links"
+QC-019,Source versus derived,Published and calculated values require different provenance,Later,warning,Record value_origin
+QC-020,Notebook fresh-kernel,All cells execute without hidden state and regenerate outputs,Phase 0,error,Test independent execution twice

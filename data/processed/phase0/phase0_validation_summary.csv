@@ -1,0 +1,11 @@
+﻿check_name,passed,details
+original_archives_present,True,13 original source ZIP files registered
+source_archive_crc,True,Every original ZIP passed CRC validation
+archive_keys_unique,True,Unique registry keys
+polymer_records,True,Three polymer systems
+source_records,True,Article and dataset references
+required_csv_outputs,True,All Phase 0 CSV outputs exist
+figures_exist,True,All Phase 0 figures exist
+metadata_requirements,True,Metadata requirements table is structurally valid
+research_questions,True,Research questions registered
+no_sample_id_fabrication,True,Registry keys are not represented as physical sample IDs
