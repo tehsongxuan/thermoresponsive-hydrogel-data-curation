@@ -1,368 +1,545 @@
-# BaTiO₃ Materials Data Curation and AI-Ready Workflow Engineering
+# Thermoresponsive Hydrogel Data Curation and Workflow Engineering
 
-## Quick navigation — Phase 00 publication
+**An independent, reproducible scientific Python project for organising, validating and connecting polymer-characterisation, rheology, imaging and biological evidence.**
 
-The following Phase 00 artefacts are published in the repository. Links are relative to the `main` branch and use the current file paths. **Phase 00 covers source registration and evidence boundaries; the Phase 01 workbook audit has not yet been completed.**
+**Project status:** Source collection and initial archive-level inspection completed; scientific data extraction, standardisation, validation and cross-technique linkage are in development.
 
-- [Repository home](./)
-- [Phase 00 — executable Jupyter notebook](./BaTiO3_Phase00.ipynb)
-- [Phase 00 — scientific HTML report](./BaTiO3_Phase00.html)
-- [View Phase 00 HTML report in a browser (external preview)](https://htmlpreview.github.io/?https://github.com/tehsongxuan/Project_Machine_learning_and_first-principles_guided_desig/blob/main/BaTiO3_Phase00.html)
-- [Phase 00 — research scope](./docs/research_scope.md)
-- [Phase 00 — source registry (CSV)](./manifests/source_registry.csv)
-- [Phase 00 — source manifest (JSON)](./manifests/source_manifest.json)
-- [Phase 00 — registration findings](./reports/registration_findings.md)
-- [Project implementation roadmap — Phases 00–09](#7-implementation-roadmap--phases-0009)
+> **Central objective:** Convert heterogeneous experimental files into structured, quality-controlled and traceable materials datasets, while preserving the scientific meaning and limitations of the original measurements. This is a data-curation and workflow-engineering project, **not** a predictive polymer-design or machine-learning modelling study at this stage.
 
-**Publication scope:** The notebook and outputs document provenance checks, file integrity and the boundary between registration and scientific validation. They do not establish that the DFT calculations, composition encodings or predictive models are independently validated. The original supplementary PDF, DOCX and XLSX files are intentionally not re-hosted here; they are linked to their official publisher sources in the research-foundation and source-data sections below. The external HTML preview is a third-party service, and will display correctly only if the uploaded HTML is a valid rendered export.
+## Quick navigation — Phase 0 publication
 
----
+The following Phase 0 file links use the canonical repository paths described in the [Phase 0 publication checkpoint](#phase-0-publication-checkpoint). **Repository file links become accessible after the corresponding artefacts have been committed to `main`.** The editable notebook is presently located at the repository root; the larger `notebooks/` directory shown later in this README remains a proposed structure for subsequent phases.
 
-**An independent research-data engineering project for reproducible, chemistry-aware materials informatics**
+- [Repository home](https://github.com/tehsongxuan/thermoresponsive-hydrogel-data-curation)
+- [Phase 0 — scientific scope and publication checkpoint](#phase-0-publication-checkpoint)
+- [Phase 0 — executable Jupyter notebook](https://github.com/tehsongxuan/thermoresponsive-hydrogel-data-curation/blob/main/00_scope_and_source_registry.ipynb)
+- [Phase 0 — scientific HTML report](https://github.com/tehsongxuan/thermoresponsive-hydrogel-data-curation/blob/main/reports/phase0/00_scope_and_source_registry.html)
+- [View Phase 0 HTML report in a browser](https://htmlpreview.github.io/?https://github.com/tehsongxuan/thermoresponsive-hydrogel-data-curation/blob/main/reports/phase0/00_scope_and_source_registry.html)
 
-**Material system:** Sr/La-substituted barium titanate, nominally `(Ba₁₋ₓ₋ᵧSrₓLaᵧ)TiO₃`  
-**Research methods:** Solid-state chemistry · First-principles calculations · Scientific data curation · Data engineering · Machine-learning validation · Reproducible Python workflows  
-**Project status:** Phase 00 source registration, integrity checks and research-scope documentation are complete. Preliminary workbook and cross-sheet observations have been recorded. The comprehensive Phase 01 workbook audit, chemical validation and independent modelling remain outside the completed Phase 00 scope.
+- [Phase 0 — scientific figures and source-register links](#phase-0-output-inventory-and-direct-file-links)
+- [Phase 0 — reproducible local execution](#phase-0-environment-and-reproducibility)
+- [Original experimental paper](https://doi.org/10.1021/acs.biomac.6c01032)
+- [Original dataset and 13 source archives](https://zenodo.org/records/21902628)
 
-## Research foundation
-
-This project is informed by two complementary peer-reviewed publications:
-
-- **[*Machine learning and first-principles guided design of BaTiO₃-based materials for capacitor applications*](https://doi.org/10.1063/5.0314819)** — *Journal of Applied Physics* **139**, 064101 (2026). This study supplies the **ceramic materials system, first-principles and machine-learning methodology, and supplementary computational data** used in the project.
-- **[*Predicting Faster Than We Can Make: Polymer-Specific Process Physics as a Frontier for Autonomous Soft-Matter Discovery*](https://doi.org/10.1002/marc.70420)** — *Macromolecular Rapid Communications* (2026). This perspective provides the **research-infrastructure motivation** for connecting scientifically complete databases, physical reasoning, feasible materials design, practical processing and experimental validation.
-
-The publications have distinct scientific roles. The ceramic study is the **primary dataset and technical case**; the soft-matter perspective informs **which research questions a trustworthy materials-data workflow must address**. The resulting approach is an **independent methodological synthesis**, not an assertion that polymer and ceramic processing physics are interchangeable or that either publication's research team is involved in this project.
+**Phase 0 HTML link note:** Both links above open the uploaded `reports/phase0/00_scope_and_source_registry.html` file. The first opens the GitHub file page; the second renders the same HTML through an external HTML preview service.
 
 ---
 
-## 1. Research objective and motivation
+## 1. Research references and original data
 
-Modern computational tools can screen many candidate materials before the corresponding physical samples can be made and tested. The consequential research challenge is not only predictive speed: it is maintaining the scientific meaning, traceability and validation status of each proposed material and its associated evidence.
-
-For a materials-discovery decision to be defensible, a predicted property must remain linked to the **composition and structural representation used, the reference calculations or measurements, the physical assumptions of those methods, the training data and validation design, and the available evidence of actual materials processing and performance**. A technically complete machine-learning table does not necessarily constitute a scientifically complete materials record.
-
-This repository will develop a reproducible data-curation and workflow-engineering pipeline for **BaTiO₃-based ceramic compositions**. It will establish a traceable evidence pathway from the original supplementary spreadsheets to standardised scientific records, first-principles results, material descriptors and, if warranted, independently evaluated machine-learning predictions.
-
-**Central research question**
-
-> How can published BaTiO₃ computational data be converted into a scientifically interpretable, auditable and reproducible evidence layer that supports robust materials analysis, appropriately constrained AI-based screening and eventual integration with experimental validation?
-
-### Specific objectives
-
-1. **Preserve scientific provenance:** link every curated value to its original file, worksheet, row and documented computation or definition.
-2. **Represent chemistry correctly:** distinguish nominal composition, spreadsheet coefficients, crystal-site descriptors, computational assumptions and unresolved interpretations.
-3. **Establish reliable scientific data quality:** audit source structure, missingness, duplicate identities, consistency, units, numerical plausibility and the status of failed or unavailable results.
-4. **Validate the computational evidence chain:** reconcile the descriptors and calculated energies across the supplementary sheets with explicit composition identifiers.
-5. **Prepare materials-informed ML inputs:** verify feature construction, document transformations, prevent target leakage and evaluate chemical-domain generalisation.
-6. **Constrain candidate design:** distinguish mathematically admissible compositions from computationally evaluated, predicted, experimentally tested and application-validated materials.
-7. **Specify pathways to future physical validation:** design appropriate, clearly *proposed* metadata structures for fabrication, characterisation, long-term reliability and human review.
-8. **Deliver reproducible software:** create transparent Python notebooks, reusable validation functions, data dictionaries, quality-control reports and documented execution requirements.
-
-The sequence deliberately prioritises **scientific evidence and data reliability before predictive modelling**. AI benchmarking is an optional downstream phase, not a substitute for scientific validation.
-
-## 2. Scientific context: composition, processing and materials properties
-
-A recurring difficulty in materials informatics is deciding whether the selected representation contains the information that actually controls the property of interest. For some quantities, chemical structure or composition provides a useful first approximation. For others, **processing conditions, microstructure, specimen state, measurement protocol and observation timescale** can materially change the answer. A robust representation must also distinguish information available at design time from information available only after synthesis, processing or measurement.
-
-This distinction is well illustrated by process-sensitive polymers and soft matter. Polymer structure-based descriptors do not necessarily capture **sequence, tacticity, molar-mass distribution, chain architecture or process history**. This is especially important for condition-sensitive quantities such as glass-transition temperature (**Tg**) and modulus. Thermoplastic properties may further depend on **melt viscosity, shear thinning, chain scission, crystallisation, cooling rates and repeated thermal or mechanical processing**. Small- and large-amplitude oscillatory shear, capillary rheometry and calorimetry probe different aspects of those behaviours. In supramolecular hydrogels, **water content, reversible physical associations, gelation kinetics, network topology, preparation history and ageing** can influence stiffness, swelling and release. Rheological quantities such as storage modulus **G′**, loss modulus **G″** and **tan δ**, together with structural and application-specific measurements, cannot be inferred reliably from a molecular formula alone.
-
-The transferable scientific principle is **representation adequacy**: records should preserve the variables and measurement conditions needed to interpret a particular property. It is not a proposal to apply polymer-specific rheological laws to ceramic oxides.
-
-For **ceramic oxides**, analogous information requirements arise through different physical mechanisms. Chemical substitution and crystal-site occupancy influence local bonding, structural distortion and polar behaviour, while **phase formation, defects, grain size, density, porosity, sintering history, electrode configuration and testing conditions** may determine the properties of a fabricated capacitor. The present source workbook provides **computational composition, descriptor and energy information**; it does not provide a traceable database of manufactured ceramic specimens. A future experimental extension would therefore need additional data rather than inferred processing histories.
-
-### Crystal chemistry and computational representation
-
-BaTiO₃ belongs to the `ABO₃` perovskite family. In the nominal investigated formula, **Ba, Sr and La occupy the A-site composition space**, **Ti describes the B-site chemistry**, and oxygen forms the anion sublattice. Replacing Ba²⁺ with Sr²⁺ or La³⁺ changes the chemical and electronic context; La substitution introduces questions about charge compensation that must be handled consistently with the specific computational model. Nominal formula constraints alone do not establish an experimental defect mechanism.
-
-The published research uses **density functional theory (DFT)**, including a **virtual crystal approximation (VCA)** treatment, to calculate reference formation energies and related properties. DFT-derived values are outputs of a specified approximate quantum-mechanical calculation. They are distinct from **ML surrogate predictions**, which approximate relationships learned from labelled calculations, and from **physical measurements**, which require actual specimens and test protocols. All three evidence classes will remain separately identified throughout the project.
-
-Formation energy will be curated using its reported definition and **eV/atom** units, together with available reference-state and method information. Elastic, thermodynamic and polarisation-related quantities discussed in the source study will be documented as **separate scientific properties** where their underlying data and definitions can be verified. They will not be collapsed into an unsupported universal materials-performance score.
-
-## 3. Source data and present evidence
-
-### Source documents
-
-| Source | Role in the project | Official link |
+| Resource | Reference | Role in this project |
 |---|---|---|
-| Published BaTiO₃ research article | Scientific questions, DFT methods, feature construction, modelling and results | [Article DOI](https://doi.org/10.1063/5.0314819) |
-| Supplementary information document | Formation-energy methodology, physical-property calculations, feature definitions and model settings | [Publisher supplementary collection](https://doi.org/10.60893/figshare.jap.c.8234602) |
-| Supplementary Excel workbook, sheets `S1`–`S4` | Primary composition, descriptor and calculated-energy records for curation | [Publisher supplementary collection](https://doi.org/10.60893/figshare.jap.c.8234602) |
-| Autonomous soft-matter discovery perspective | Research questions concerning information quality, physical reasoning, constrained design, processing and long-term validation | [Perspective DOI](https://doi.org/10.1002/marc.70420) |
+| Research article | [Nemati Mahand, S. *et al.* (2026), *Impact of Sterilization Techniques on the Physicochemical and Biological Properties, and 3D Printability of Thermoresponsive Hydrogels*, **Biomacromolecules**, 27, 6527–6542](https://doi.org/10.1021/acs.biomac.6c01032) | Scientific context, experimental methods, published results and interpretation |
+| Original experimental dataset | [Zenodo record 21902628](https://zenodo.org/records/21902628) · [Dataset DOI](https://doi.org/10.5281/zenodo.21902628) | Deposited source files, retained under their original names |
+| Journal article page | [ACS Publications](https://pubs.acs.org/doi/10.1021/acs.biomac.6c01032) | Published methods, figures, tables and article-associated information |
+| Data-management framework | [FAIR Guiding Principles](https://www.go-fair.org/fair-principles/) | General principles of findable, accessible, interoperable and reusable research data |
 
-### Preliminary workbook inventory
+**Attribution:** The experimental work, original data, figures and scientific conclusions belong to the cited researchers. The curation pipeline and documentation developed here are an independent educational and research-portfolio exercise. No affiliation with the original research group is implied. Usage or redistribution of original deposited files must follow the source's applicable rights and licence terms.
 
-The following findings originate from an **initial inspection** of the supplied workbook, not yet from the complete, publicly executable audit planned for Phases 00–01.
+## 2. Project overview and scientific motivation
 
-| Worksheet | Data rows | Columns | Preliminary interpretation |
-|---|---:|---:|---|
-| `S1` | **30,301** | 100 | Candidate composition and descriptor space; not 30,301 independently calculated DFT targets |
-| `S2` | **231** | 102 | Composition fields, descriptors, final energies and formation-energy labels |
-| `S3` | **231** | 82 | Retained machine-learning input descriptors |
-| `S4` | **231** | 10 | Composition, reported calculation method and structure labels, and energy records |
+Synthetic thermoresponsive hydrogels are polymer systems whose physical state and mechanical response change with temperature. Their behaviour depends on the **chemical structure of the polymer**, its **molecular architecture and molar-mass distribution**, its **concentration and solvent environment**, and its **processing and measurement history**.
 
-Initial checks indicate **231 unique composition keys** in each of `S2`, `S3` and `S4`, with compatible composition identities; shared `S2`/`S3` feature values and the `S2`/`S4` reported energy values agree in the preliminary comparisons. No empty cells in the inspected populated ranges or exact duplicate complete records were found. These are **structural observations**, not proof of DFT convergence, physical validity or model generalisation. They will be independently reproduced, logged and exposed to inspection in the implementation.
+A useful conceptual sequence is:
 
-The published study describes **100 initial material features** and **82 retained model inputs**, after exclusion of 16 invariant features and two non-input fields (a descriptive final-energy field and the formation-energy target). The 231 labelled records and 30,301 candidate records will remain distinct populations, with separate evidence-status definitions.
+**Polymer structure and composition → molecular association and self-assembly → temperature-dependent gelation → viscoelastic behaviour → printing performance and biological response**
 
-### Priority chemical-interpretation question
+The original study investigates how sterilisation or disinfection treatments affect three thermoresponsive polymer systems. It includes complementary characterisation methods: size-exclusion chromatography (SEC/GPC), proton nuclear magnetic resonance (¹H NMR), Fourier-transform infrared spectroscopy (FTIR), rheology, sol–gel observations, printing images and biological assessments.
 
-The nominal composition is **(Ba₁₋ₓ₋ᵧSrₓLaᵧ)TiO₃**, with nominal A-site substitution bounds **x ≥ 0, y ≥ 0 and x + y ≤ 1**.
+These measurements answer different scientific questions. For example, SEC measures molar-mass distributions, FTIR and NMR provide chemical evidence, and rheology measures how the hydrogel resists deformation and flows. An image of a printed grid documents geometry, not molecular weight. A reliable data pipeline must **preserve these distinctions while making justified links between experimental records**.
 
-In the initial workbook inspection, `Ba + Sr + La = 1` for the 231 labelled compositions, while the **tabulated Ti coefficient** follows `Ti = 1 − La/2`; 210 entries have tabulated Ti values below 1. The main paper describes the nominal TiO₃ formula and states that explicit Ti or oxygen vacancies were **not introduced** in the specified first-principles calculations.
+### Research questions
 
-This requires **scientific reconciliation of source encoding and modelling assumptions**, not automatic data correction. The workflow will retain separate fields for the original coefficients, nominal representation, calculated diagnostic relationships and interpretation status. It will **not** infer actual Ti vacancies, alter the source values or assert charge-compensation mechanisms from a spreadsheet pattern alone.
+1. What files, data formats, experimental treatments and metadata are present in the source deposit?
+2. Which original measurements can be extracted and standardised without losing their acquisition context?
+3. Where are values missing, units inconsistent, calibration details absent, or sample relationships unverified?
+4. How can polymer structure, processing history, SEC, NMR, FTIR and rheology evidence be represented in linked scientific tables?
+5. Can numerical measurements and suitably calibrated printing images be visualised or analysed reproducibly?
+6. Which cross-technique comparisons are supported by the data, and which must remain explicitly unresolved?
 
-That issue is a practical example of why data curation in materials science involves chemical interpretation, not simply correcting missing values and column formats.
+## 3. Polymer systems and experimental design
 
-## 4. Research strategy: a trustworthy materials-evidence workflow
+| Polymer system | Molecular architecture | Thermoresponsive behaviour | Why its identity matters for curation |
+|---|---|---|---|
+| **Pluronic F127 (poloxamer 407)** | PEO–PPO–PEO triblock copolymer: hydrophilic poly(ethylene oxide) outer blocks and a more hydrophobic poly(propylene oxide) middle block | Temperature-dependent hydration and micellisation can lead to gel formation at suitable concentrations | Polymer grade, composition, concentration, thermal history and treatment must be retained with the measurement |
+| **pMeOx-b-pnPrOzi** | Diblock poly(2-methyl-2-oxazoline)-block-poly(2-*n*-propyl-2-oxazine) | Warming can promote thermogelation through temperature-dependent self-assembly | Distinct synthesised batches are used in the published study; batch identity cannot be discarded |
+| **pMeOx-b-pPheOzi-b-pMeOx** | Triblock poly(2-methyl-2-oxazoline)-block-poly(2-phenyl-2-oxazine)-block-poly(2-methyl-2-oxazoline) | **Inverse thermogelation:** the system can form a gel on cooling | Heating and cooling cannot be treated as equivalent, and the temperature of each experiment is essential metadata |
 
-The architecture follows four connected research needs: **scientific memory, physically grounded computation, constrained materials design and credible physical validation**. Each is implemented only to the level supported by the available data.
+**Treatments discussed in the source study:** untreated control, autoclaving, aerobic dry heat, anaerobic dry heat, ethanol washing, UV irradiation and filtration; supplementary work includes repeated filtration, combined treatments and treatment of formulated hydrogels.
 
-### 4.1 Scientific memory: complete metadata, provenance and quality control
+An important distinction is whether sterilisation was performed on **polymer powder**, a **dilute solution** or a **fully formulated hydrogel**. These are not interchangeable experimental conditions. For the diblock system, the study also describes **two synthesised batches**, with the filtration experiments using a different batch from several other treatment groups. Our schemas and comparisons must retain this information.
 
-A useful scientific database must retain more than a composition and a number. It needs the origins, methods, conditions, transformations and limitations that make the number interpretable. Particularly important are **unreported information, genuinely failed attempts, unsuccessful outcomes and ambiguous scientific associations**. Excluding or misclassifying such cases can introduce selection bias into downstream analysis.
+## 4. Original Zenodo archive inventory
 
-**Project response**
+The following are the **13 deposited ZIP archives**. Filenames, including their original spelling and punctuation, are preserved here. The internal-entry counts below are from an initial structural inspection; they **do not** represent numbers of independent experiments or biological specimens.
 
-- Maintain an immutable source registry: publication DOI, download location, source version, acquisition date, file size, SHA-256 checksum and redistribution-review status.
-- Preserve source-level identity: original filename, sheet, row, column/header, formula or cached value, and stable source-record identifier.
-- Define material and computation records with explicit composition, structure, computational method, reported energy, unit, descriptor source and evidence class.
-- Build a descriptor dictionary covering **A-/B-site relevance, elemental meaning, weighting/aggregation rule, units, allowed values and source references**, including the 82 selected modelling inputs.
-- Create a quality-control register for invalid or ambiguous values, duplicate keys, unit conflicts, source discrepancies, unresolved mappings and scientifically reviewable anomalies.
-- Represent **candidate-only, DFT-calculated, ML-predicted, experimentally observed, documented failed and unknown** states explicitly. An unlabelled candidate is **not** evidence of a failed calculation or synthesis.
-- Preserve raw observations; any standardisation or filtering will be recorded as a new, reproducible transformation rather than an undocumented change to a source file.
+| Original archive name | Internal file entries | Main material | Proposed curation focus |
+|---|---:|---|---|
+| `Figure 2b,c,d-SEC.zip` | 6 | OriginLab SEC/GPC projects | Chromatogram and molar-mass metadata |
+| `Figure S16-SEC.zip` | 3 | Additional SEC/GPC projects | Repeated-filtration comparison; overlapping projects |
+| `Figure S2,3,4,11-1H NMR.zip` | 755 | Raw/processed NMR instrument directories and project files | Acquisition metadata, spectra, processing lineage |
+| `Figure S5,6,7-FTIR.zip` | 64 | FTIR text exports and instrument/project files | Spectral units, chemical-characterisation QC |
+| `Figure3,4,5, and S8-Rheology data.zip` | 15 | OriginLab rheology projects | Gelation, deformation, flow and recovery |
+| `Figure S1 and 2b-Solgel transitions.zip` | 8 | Gelation photographs/figure images and support file | Conditions and visual observations |
+| `Figure S9,10, and 6.zip` | 116 | Printing photographs and support files | Printing-image inventory and image QC |
+| `Figure S21-Printing.zip` | 17 | Additional printing images and support files | Printing after hydrogel treatment |
+| `Figure S 12,13,14-Bacterial gwroth test.zip` | 61 | Sterilisation-screening photographs and support files | Biological-image inventory and experiment context |
+| `Figure S15-Bacterial growth after 3time Filtration.zip` | 11 | Filtration-related photographs and support file | Repeated-filtration evidence |
+| `Figure S17-Autoclave followed by filtration.zip` | 8 | Sequential-treatment photographs and support file | Treatment-sequence provenance |
+| `Figure S18.zip` | 5 | Hydrogel-treatment images | Formulated-hydrogel observations |
+| `Figure S19,20,22-Sterilization of hydrogels by UV.zip` | 50 | Mixed SEC, NMR, FTIR, rheology, documents and images | Cross-technique processing of supplementary experiments |
+| **Total** | **1,119** | **13 original archives** | **File-level inventory, not independent sample count** |
 
-**Why it matters.** A formation-energy prediction may look precise but become unusable if its target, units, DFT assumptions or chemical identity cannot be reconstructed. A traceable database makes errors identifiable, supports reanalysis and provides a reliable starting point for later physical work.
+### Initial source-inspection findings
 
-**Expected artefacts:** `source_registry.csv`, `source_manifest.json`, `workbook_inventory.csv`, `data_dictionary.csv`, `descriptor_dictionary.csv`, `qc_findings.csv`, `evidence_status_dictionary.csv` and provenance-link tables.
+- **243 image files** (`.jpeg`, `.jpg` and `.png`) were identified, including printing photographs, experimental observation images and low-resolution previews.
+- **35 OriginLab `.opju` project files** were identified. Some retain worksheets, graphs or analysis settings in a proprietary project format; complete numerical recovery must be verified before scientific processing is claimed.
+- **26 numerical FTIR text spectra**, containing **60,472 numeric spectral observations**, were located. Of these, **24 specify `%T` (percentage transmittance)** and **2 specify `Abs` (absorbance)**. These are different signal representations and should not be plotted together as if their values had identical meanings.
+- The deposit contains Bruker-style NMR acquisition/processing files, including `fid` records, and numerical SEC text exports in the supplementary hydrogel-treatment archive.
+- Content-identical SEC projects occur in more than one archive. Such repetition must be distinguished from genuinely repeated laboratory measurements.
+- Some image entries are only **160 × 120 pixels**, suitable as previews but not reliable for detailed quantitative morphology measurement.
 
-### 4.2 Physical reasoning: traceable DFT references and validated ML surrogates
+**Status of these findings:** verified *file-structure and header-level observations*, **not** a claim that all raw instrument values, all physical sample identities or all published results have been independently reconstructed.
 
-Fast surrogate models can be valuable when they approximate a costly physical calculation within a **specified validity domain**. However, model accuracy on nearby compositions is not equivalent to accuracy on unfamiliar chemistries, nor does agreement with DFT establish experimental performance. A reliable computational workflow therefore links predictions to the *actual reference method* and makes extrapolation visible.
+## 5. Data curation: preserving scientific meaning
 
-**Project response**
+Data curation is the process of making experimental records **understandable, consistent, traceable and reusable**. It is not simply deleting blank rows or renaming columns.
 
-- Maintain distinct fields for `reference_formation_energy_eV_atom`, `independent_prediction_eV_atom`, `prediction_residual_eV_atom`, `calculation_method`, `model_run_id` and `validation_split_id`.
-- Reconcile the 231 labelled composition records and energy values between `S2` and `S4` by explicit scientific keys, not assumed row order.
-- Reconstruct the feature inventory: explain the transition from 100 candidate features to 82 model inputs; check constants, correlated descriptors, physical definitions and inadvertent target-derived inputs.
-- Confirm exact `S2`–`S3` linkage for the 82 retained features and preserve an explicit feature-exclusion manifest.
-- Investigate data leakage, near-duplicate compositions and split-sensitive processing. Any learned transformation, imputation or feature selection for a new experiment must be fitted on the training partition alone.
-- Where justified, benchmark simple regressors and selected tree/ensemble methods, using **MAE, RMSE, R², residual analysis, declared units and recorded seeds**. Report ordinary splits alongside feasible **held-out composition-region** tests in the Sr/La design space.
-- Measure how far each screened candidate lies from the available labelled chemistry, and flag out-of-domain estimates rather than extrapolating without qualification.
-- Specify, as a *future capability only*, how uncertain predictions could be submitted for additional high-fidelity calculations and subsequently recorded as new evidence.
+| Workstream | Plain-language purpose | Scientific/Python implementation | Planned evidence |
+|---|---|---|---|
+| **Source registration** | Know where every file originated | Record Zenodo DOI, archive path, original filename, size, file type and checksum | `source_registry.csv`, `source_file_inventory.csv` |
+| **File integrity** | Know whether files can be opened reliably | Validate ZIP integrity; report unreadable or truncated files | `file_integrity_report.csv` |
+| **Format classification** | Distinguish instrument data from previews and software files | Detect `.opju`, Bruker acquisition files, text spectra, images, PDFs and support files | `file_format_register.csv` |
+| **Scientific metadata** | Record how measurements were made | Capture polymer, batch, medium, treatment, temperature, time, instrument and analysis parameters where documented | `measurement_register.csv` |
+| **Schema design** | Put each kind of information in the correct table | Define data types, column meanings, units and keys | `data_dictionary.csv`, schema definitions |
+| **Missing-data analysis** | Identify what is unavailable and why | Check missing values and classify `not measured`, `not determined`, `not applicable`, `unresolved` and similar cases | `missing_data_report.csv` |
+| **Duplicate investigation** | Avoid double-counting | Use file hashes plus experimental context; distinguish copied files from repeat acquisitions | `duplicate_review.csv` |
+| **Scientific standardisation** | Make compatible measurements comparable | Standardise valid units and labels, always retaining original values | Standardised measurement tables |
+| **Provenance** | Trace every output to its evidence | Record source archive, internal path, worksheet/record and transformation steps | `record_linkage.csv`, `transformation_log.csv` |
+| **Quality assurance** | Make uncertainties visible rather than hiding them | Rule-based checks and a reviewable issue register | `qc_findings.csv`, `validation_summary.csv` |
 
-The physical reasoning here is distinct from polymer simulations of viscoelastic flow, cooling and crystallisation. What transfers is the need to **tie a fast approximation to an identified physical reference and periodically reassess its validity**. The present repository cannot run a live closed-loop DFT service using the supplementary workbook alone.
+### Missing-value handling
 
-**Expected artefacts:** `calculation_provenance.csv`, `feature_exclusion_manifest.csv`, `feature_linkage_checks.csv`, `leakage_audit.csv`, `split_plan.json`, `ml_readiness_report.md` and, if the evidence permits modelling, `benchmark_results.csv`, `prediction_audit.csv` and `model_card.md`.
+Not every empty field represents the same situation:
 
-### 4.3 Materials design: composition constraints and evidence-aware screening
+- **Missing/unknown:** a value is not available from the inspected source.
+- **Not determined (`ND`):** the authors could not reliably determine a value using the method or signal available.
+- **Not applicable (`NA`):** the field does not apply to that observation.
+- **Not printable:** an experimental outcome, not a missing numerical printing measurement to be imputed.
+- **Bounded/censored result:** a reported result such as `<5` or `>250` is a limit, **not** an exact observation of 5 or 250.
+- **Not yet extractable:** data may exist in a proprietary format, but a validated export has not been obtained.
 
-Materials design should not rank candidates solely by a favourable predicted value. The candidate must be chemically defined, compatible with the modelling domain and appropriately assessed against physical or processing constraints. Predicted formation energy offers **one computational consideration** in materials design, not a demonstration of phase-pure synthesis, stable manufacturing or capacitor reliability.
+The workflow will preserve the **reported text or qualifier**, the numerical bound where applicable, and a separate missingness/status code. No experimental values or sample identities will be fabricated.
 
-**Project response**
+### Why provenance and sample linkage matter
 
-- Validate the nominal A-site fraction constraints `x ≥ 0`, `y ≥ 0` and `x + y ≤ 1`, plus non-negativity and any verified bounds of the published candidate search space.
-- Track the original Ba, Sr, La, Ti and O coefficients separately from a constructed nominal formula; retain the Ti–La interpretation issue for scientific review.
-- Check descriptor completeness and model-input compatibility before assigning estimates to previously unlabelled candidates.
-- Distinguish records that are **proposed compositions**, **reported first-principles calculations**, **independent ML predictions** and **documented experimental materials**. Advancing to a stronger evidence category requires new supporting records.
-- Treat charge-compensation assumptions, structural phase, polarisation behaviour, energy barriers, mechanical properties, dielectric performance and synthesising conditions as separate constraints or evidence types.
-- Produce candidate lists with explicit model version, predicted target and units, domain flag, source coverage and human-review status; avoid unsupported “best material” rankings.
+Two files may mention the same polymer and treatment yet belong to **different synthesis batches, measurement dates, prepared specimens or analysis runs**. A defensible scientific database must distinguish:
 
-A processability-aware screen can be specified for future use, but it cannot be operationally populated with **sintering yield, deposition conditions, microstructure or electrical measurements** unless those data are genuinely available.
+- **Source-supported link:** explicitly supported by a specimen identifier, instrument record, methods section or other direct evidence.
+- **Candidate link:** plausible based on filenames, figure labels or treatment descriptions, but not verified.
+- **Unresolved link:** insufficient information for a justified relationship.
 
-**Expected artefacts:** `candidate_registry.csv`, `composition_validation.csv`, `composition_representation_review.csv`, `candidate_constraints.json` and conditional `candidate_screening.csv`.
+Generated database keys are for organisation; they must not be presented as original physical-sample identifiers.
 
-### 4.4 Physical execution and characterisation: a carefully bounded data interface
+## 6. Polymer-characterisation workflows
 
-Materials discovery must eventually connect a proposed composition to **a real processing route, a particular physical specimen and a measured property**. In process-sensitive thermoplastics, viscous melt flow, shear history and cooling can determine final morphology; in supramolecular hydrogels, assembly and preparation history shape the observed network state. Similar data-engineering discipline is needed in ceramics, although their mechanisms and experimental protocols differ.
+### 6.1 SEC/GPC — molar-mass distributions
 
-For ceramic oxides, future physical records might include precursor lots and purity, powder preparation, milling, calcination, sintering temperature/time/atmosphere, coating or thin-film deposition settings, heating/cooling profiles, phase identification, grain size, density, porosity, electrode configuration, dielectric testing and instrument calibration. **These are prospective metadata requirements, not measurements found in the current workbook.**
+**Polymer science:** Size-exclusion chromatography separates polymer chains according to their behaviour in the chromatographic system. Appropriate calibration or detector methods support estimates of **number-average molar mass (`Mn`)**, **weight-average molar mass (`Mw`)** and **dispersity (`Đ = Mw/Mn`)**. The width and shape of a chromatogram may reveal changes in a polymer population, but detector time and signal alone are not absolute molecular-weight measurements.
 
-**Project response**
+**Planned processing:**
 
-- Design an **optional experimental extension** with `experimental_batch`, `specimen`, `processing_step`, `instrument_run`, `calibration`, `measurement`, `quality_event` and `failure_log` entities.
-- Require separate identifiers for computational compositions/calculations and physical specimens. Matching chemical formulae do not establish sample identity.
-- Distinguish intended process settings from observed conditions, original instrument files from processed measurements, and successful outcomes from recorded aborted or failed operations.
-- Specify machine-readable protocol identifiers, source timestamps, units, calibration references, structured event logs, exception handling and decision audit trails.
-- Include human review when a future model recommendation might influence physical experimentation.
+1. Catalogue OriginLab projects and readable instrument exports separately.
+2. Extract elution time, detector response, channel identity, acquisition conditions and calibration details when present.
+3. Preserve original signal and any separately reported baseline-corrected or normalised signal.
+4. Record polymer batch and treatment conditions; identify repeat controls and possible recalibration between analytical sessions.
+5. Check monotonic time axes, missing detector points, duplicated measurement files and invalid/missing molecular-weight metadata.
+6. Produce original-unit chromatograms and scientifically valid comparisons; compare source-reported `Mn`, `Mw` and `Đ` only on a documented method basis.
+7. Flag discrepancies between instrument exports, methods text and published tables for review rather than resolving them by assumption.
 
-The present project will **document the interface and validation rules**; it does not claim robotic laboratory control, experimental characterisation or access to research instruments.
+**Visualisations:** detector-response versus elution-time overlays; molar-mass/dispersity comparisons; calibration and acquisition-metadata coverage; treatment-level results with source provenance.
 
-**Expected artefacts:** `experimental_schema_proposal.md`, `specimen_linkage_rules.md`, `measurement_metadata_template.csv` and `instrument_event_schema.json`.
+**Limitation:** A proprietary `.opju` file may require an Origin export or a validated compatible reader. A plotted SEC peak must not be turned into a molecular-weight distribution without appropriate calibration.
 
-## 5. Two persistent research limits: time and physical processability
+### 6.2 ¹H NMR — chemical identity and block composition
 
-Reliable data engineering can reduce avoidable errors and support more efficient research decisions. It does not eliminate the physical constraints that govern actual materials behaviour.
+**Polymer science:** ¹H NMR detects chemically distinct proton environments. Well-resolved, correctly assigned signals can support polymer-structure identification, block-composition estimation and degree-of-polymerisation calculations. Overlapping or poorly isolated peaks limit reliable integration.
 
-### 5.1 Slow properties, ageing and mechanism-aware validation
+**Planned processing:**
 
-A short test or a fast prediction is not automatically a substitute for long-duration performance. For polymers, this concern includes **creep, stress relaxation, degradation, repeat-processability, molecular or network ageing and biological response**. Accelerated approaches such as **time–temperature superposition and WLF/Arrhenius-based treatments** depend on appropriate mechanisms and valid temperature or stress regimes; morphological transitions, chemical changes and nonlinear responses can invalidate straightforward extrapolation.
+1. Identify raw `fid` acquisitions, acquisition parameters, processed spectra and software-support files.
+2. Extract documented metadata such as spectrometer frequency, solvent, temperature, acquisition name and processing settings.
+3. Keep raw acquisitions separate from processed spectra and paper-reported integrated results.
+4. Create spectral plots in chemical shift (ppm), with reference and phase/baseline handling clearly documented.
+5. Record signal assignments and integration decisions as reviewable scientific annotations.
+6. Compare molecular descriptors derived from NMR with separately determined SEC results, without assuming perfect agreement.
+7. Preserve cases where block composition or end-group analysis cannot be determined reliably.
 
-For ceramic capacitors, future research may require **dielectric ageing, electrical fatigue, breakdown testing, thermal cycling and long-term device reliability**. These cannot be inferred from the supplied DFT formation-energy table.
+**Visualisations:** spectral overlays by treatment; acquisition-metadata coverage; annotated chemical-shift regions; data-availability matrices.
 
-The project will specify a future `long_horizon_validation` record with specimen identity, property, stressor, protocol, actual duration, time series, uncertainty, mechanistic assumptions and validated extrapolation domain. It will distinguish **direct observation**, **validated accelerated testing**, **unvalidated proxy** and **model extrapolation**. The fields remain unpopulated where source evidence does not exist.
+### 6.3 FTIR — chemical bonds and degradation evidence
 
-### 5.2 The execution gap and processing-dependent physics
+**Polymer science:** FTIR measures vibrational responses associated with chemical bonds and functional groups. Comparing spectra before and after sterilisation may reveal changes consistent with oxidation, chemical modification or other treatment effects, subject to spectral quality and interpretation.
 
-Physical automation introduces constraints that are not visible in a composition-only dataset: flow behaviour, material handling, equipment condition, fouling, thermal gradients, batch variability, instrument response and scale effects. Non-dilute polymer solutions and melts can exhibit **non-Newtonian viscosity, yield-stress behaviour, elastic recoil and shear-induced structural changes**; ceramics processing can instead involve **powder flow, slurry rheology where relevant, sintering shrinkage, defect control, grain development, phase purity and furnace or deposition uniformity**.
+**Verified data issue:** The source text files contain both **percentage transmittance (`%T`) and absorbance (`Abs`)**. For a valid transmittance fraction `T`, absorbance is `A = −log10(T)`; percentage transmittance must first be converted to a fraction. Conversion is appropriate only with valid signal definitions and defensible measurement conditions. Original measurements remain unchanged.
 
-The project addresses these limits by specifying **route-specific process metadata and decision provenance**, not by claiming that any physical bottleneck is solved. Potential research automation must preserve human accountability, process safety, instrument state and the distinction between a proposed action and a verified outcome. Demonstration at laboratory scale would also not, without further evidence, establish manufacturing-scale reliability.
+**Planned processing:**
 
-## 6. Evidence architecture and scientific data model
+1. Parse source headers, wavenumber axes, detector signal and declared units.
+2. Validate numerical row counts, wavenumber ordering, value ranges and missing values.
+3. Separate transmittance and absorbance until their representations are properly handled.
+4. Retain raw spectra alongside any documented transformed, baseline-corrected or normalised versions.
+5. Generate overlays for matching polymer/treatment combinations.
+6. Report possible spectral features as *candidates for scientific interpretation* rather than automatically asserting specific chemical products.
+7. Maintain peak-selection, baseline and transformation logs to allow comparisons to be reproduced.
 
-The planned pipeline separates evidence levels while providing explicit, inspectable links:
+**Visualisations:** original FTIR spectra; treatment overlays; spectral-unit coverage; annotated review regions; transformed-versus-source comparisons.
+
+## 7. Rheology and thermogelation workflow
+
+**Rheology** examines how a material deforms and flows when forces are applied. This is central to injectable and printable thermogels because a formulation must flow during delivery, establish sufficient shape or network stability, and often recover after strong deformation.
+
+| Measurement | What it means | Scientific information to preserve | Planned analysis / figure |
+|---|---|---|---|
+| **Storage modulus, G′ (Pa)** | Elastic or energy-storing response | Temperature, frequency, strain, geometry and conditioning | `G′` curves and comparisons |
+| **Loss modulus, G″ (Pa)** | Viscous or energy-dissipating response | Same testing conditions as G′ | `G″` curves; `tan δ = G″/G′` where justified |
+| **Temperature sweep** | How stiffness and viscous response change with temperature | Heating/cooling direction, ramp rate, dwell time and oscillatory settings | G′/G″ versus temperature; operational crossover candidates |
+| **Frequency sweep, when available** | How network response varies with deformation timescale | Angular frequency, fixed temperature, strain within the LVR | G′/G″ versus angular frequency |
+| **Amplitude / strain sweep** | When response becomes nonlinear as deformation increases | Applied strain or stress, frequency, temperature | Modulus versus strain; LVR review |
+| **Flow sweep** | How viscosity varies with shear rate | Rate range, temperature and instrument conditions | Viscosity versus shear rate; shear-thinning checks |
+| **Yield / flow response** | When material begins to yield or becomes predominantly flow-like | Operational definition and loading mode | Yield/flow summary with definitions |
+| **Structure-recovery test** | Whether response returns after high shear | High/low shear sequence and duration | Response versus time and recovery summaries |
+
+### Gelation is an operational measurement
+
+A frequently used analysis identifies a temperature at which `G′` crosses `G″`. This can give an **operational crossover temperature**, but it does **not automatically prove a persistent, three-dimensional gel network**. Frequency, strain, concentration, temperature ramp, sample equilibration and thermal history can change the result. Therefore:
+
+- Record the **gel-point definition** used in each source.
+- Distinguish reported gelation temperature from independently recalculated crossover temperature.
+- Keep heating and cooling trajectories separate.
+- Preserve non-gelling, missing and excluded cases as meaningful outcomes.
+- Evaluate low-frequency network behaviour only where suitable measurements actually exist.
+- Document assumptions when calculating recovery ratios, model fits or other derived rheological properties.
+
+**Planned outputs:** standardised rheology tables, method-condition registry, rheology plots, operational gelation summaries, transformation records and limitations reports. The current source contains primarily OriginLab projects; numerical exports must be verified before these are described as completed results.
+
+## 8. Printing-image curation and computer vision
+
+The deposited image collections offer a second major engineering task: organising **visual scientific evidence** rather than only numerical instrument tables. The source article describes printed grids imaged using optical/stereo-microscopy and related photography; raw SEM and TEM micrograph datasets have **not** been established in this deposit.
+
+### Image inventory and metadata
+
+For each image, the proposed pipeline records original archive/path, format, image width and height, checksum, colour mode, any embedded metadata, documented specimen/treatment context and image-review status.
+
+### Image quality and scientific suitability
+
+Automated checks can flag unreadable images, duplicate content, low resolution, poor contrast, blur, unusual aspect ratios or absent scale information. These are *screening flags*, not proof that an image is scientifically invalid. Preview thumbnails, overview photographs and measurement-ready microscopy images must be distinguished.
+
+### Quantitative printing assessment (conditional on calibration)
+
+Where resolution, physical scale, treatment identity and image quality are sufficient, proposed analysis includes:
+
+- Segmenting printed strands and pores.
+- Measuring central strand widths away from intersections.
+- Recording pore area and perimeter.
+- Comparing shapes between documented polymer/treatment groups.
+- Calculating the reported printability descriptor `Pr = L²/(16A)` for suitable grid pores, where `L` is the pore perimeter and `A` is the pore area; `Pr ≈ 1` corresponds to a square pore.
+- Comparing computed image features with *separately labelled* measurements published by the original researchers.
+
+All segmentation thresholds, regions of interest, scale assumptions and failed cases will be logged. Visual resemblance alone is not sufficient to infer physical pore dimensions or hydrogel network mesh size.
+
+**Visualisations:** indexed HTML image galleries; image-format/resolution summaries; before/after comparisons; annotated segments and pores; QC-image contact sheets; distributions of validated geometry measurements.
+
+## 9. Sol–gel, sterilisation and biological evidence
+
+Visual sol–gel tests, culture photographs and cytocompatibility measurements provide experimental context beyond spectroscopy and rheology. Their interpretation depends on polymer identity, formulation, **stage of treatment**, incubation or observation duration, and assessment method.
+
+### Proposed curation and checks
+
+- Represent control, autoclave, dry-heat, anaerobic dry-heat, ethanol, UV, single/repeated filtration and sequential processes using a **controlled treatment vocabulary** without altering original labels.
+- Record concentration, treatment temperature/time and whether the specimen was powder, solution or formulated hydrogel where reported.
+- Link photographs to figure captions, source folders, observation times and treatment descriptions when evidence supports the link.
+- Separate *qualitative observations* from independently measured cell-viability or IC50 values.
+- Record assay concentration, duration, organism/cell model, biological versus technical replicates and reported uncertainty.
+- Preserve thresholded IC50 values (`<...` or `>...`) and distinguish missing from censored results.
+- Document the paper's stated limitations for microbial-growth screening: appearance and microscopy are not equivalent to formal pharmacopoeial sterility assurance.
+
+**Visualisations:** treatment-evidence matrices; biological-outcome summaries with censoring indicated; photographic galleries; data-coverage charts.
+
+## 10. Scientific schemas and cross-technique linkage
+
+A useful analysis-ready data model should keep **entities** (what something is) separate from **measurements** (what was observed) and **evidence** (where a claim came from).
+
+| Proposed output | Purpose |
+|---|---|
+| `source_registry.csv`, `archive_inventory.csv`, `source_file_inventory.csv` | Source DOI, archive inventory and original file provenance |
+| `polymer_register.csv`, `polymer_batch_register.csv` | Chemical identity, architecture and documented batch information |
+| `formulation_register.csv`, `treatment_register.csv` | Concentration, medium, treatment conditions and treatment stage |
+| `measurement_register.csv`, `measurement_conditions.csv` | Technique, run, instrument settings and acquisition context |
+| `sec_measurements_standardised.csv` | Traceable chromatograms and reported/calculated molar-mass fields |
+| `nmr_measurements_standardised.csv` | Acquisition metadata, spectra or documented chemical assignments |
+| `ftir_measurements_standardised.csv` | Wavenumber, observed signal, original units and valid transformations |
+| `rheology_measurements_standardised.csv` | Rheological observations and test conditions |
+| `image_records_standardised.csv`, `printing_measurements.csv` | Image metadata, QC and validated image-derived descriptors |
+| `biological_assay_register.csv` | Experimental biological observations and reported results |
+| `record_linkage.csv`, `unresolved_review_items.csv` | Confirmed, candidate and unresolved relationships |
+| `data_dictionary.csv`, `qc_findings.csv` | Field definitions, validation rules and quality-review evidence |
+| `transformation_rules.csv`, `standardisation_decisions.csv`, `run_manifest.json` | Processing steps, choices, software versions and reproducibility evidence |
+
+### Intended evidence pathway
+
+`Polymer / batch → formulation → treatment / processing history → measurement run → raw source file → validated observation → derived result → published comparison`
+
+Links will be created **only when supported** by original metadata, paper methods or other explicit evidence. Comparisons at polymer/treatment level are not a substitute for confirming that two measurements came from the *same physical sample*.
+
+## 11. Quality-control framework
+
+The pipeline will use automated rules for clearly detectable problems, with human scientific review for interpretative decisions.
+
+| QC category | Example rule or review question | Response |
+|---|---|---|
+| **Integrity** | Does the ZIP pass CRC validation? Is the file readable? | Log pass/failure with original path |
+| **Completeness** | Are expected mandatory fields available for the specific method? | Report missingness by technique |
+| **Units** | Is FTIR `%T` being mixed with absorbance? Are molar masses and temperatures labelled? | Preserve source form; transform only with a documented rule |
+| **Numerical validity** | Are instrument axes numeric and plausible? Are duplicates or non-finite values present? | Flag for review; avoid silent deletion |
+| **Acquisition context** | Are temperature, ramp rate, frequency, strain and instrument settings known? | Mark comparisons limited if conditions differ |
+| **Identity** | Is polymer batch or treatment stage ambiguous? | Retain uncertainty and do not join unsupported records |
+| **Spectral processing** | Was the spectrum smoothed, normalised or baseline-corrected? | Record transformations and maintain raw arrays |
+| **Imaging** | Is image scale sufficient for a proposed physical measurement? | Separate visual QC from quantitative analysis eligibility |
+| **Replicates** | Are technical replicates distinguishable from independent material batches? | Avoid pseudoreplication and inflated sample counts |
+| **Reporting** | Are `ND`, `NA`, `not printable` and bounded values retained accurately? | Encode reason/qualifier separately |
+| **Reproducibility** | Does a clean-run notebook regenerate the expected output schema and counts? | Produce validation summary and run manifest |
+
+A QC flag is **not automatically an error**, and a scientifically plausible outlier should not be removed merely because it looks unusual. Findings will be tracked with a rule, evidence, severity, review status and documented resolution.
+
+## 12. Scientific visualisation plan
+
+**Visualisations are part of the intended workflow, not decorative additions.** A figure is produced only when the underlying measurements and relevant units have been successfully extracted and validated.
+
+| Area | Planned plots or visual products |
+|---|---|
+| **Source audit** | Archive-size charts; file types by archive; duplicate-content summaries; instrument-format coverage |
+| **Data quality** | Missing-data heatmaps; QC-category counts; metadata-completeness charts; experimental coverage matrices |
+| **SEC/GPC** | Elution-time chromatograms; normalised detector-response overlays; molar-mass and dispersity summaries |
+| **NMR** | Chemical-shift spectra; selected peak annotations; acquisition-parameter comparisons |
+| **FTIR** | Original and justified transformed spectra; control/treatment overlays; unit-consistency plots |
+| **Rheology** | G′/G″ versus temperature; modulus versus strain/frequency where available; viscosity versus shear rate; recovery curves |
+| **Sol–gel and printing** | Condition-labelled image galleries; before/after treatment views; validated strand/pore geometry |
+| **Biological data** | Treatment-level assay summaries; qualifiers/censoring-aware outcome charts; image-evidence galleries |
+| **Integrated evidence** | Polymer × treatment × technique coverage maps; provenance/linkage diagrams; scientifically supported cross-technique comparisons |
+
+Plots will specify source, units, experimental conditions and whether values are **measured**, **source-reported**, **calculated** or **image-derived**. Uncertainty and replicates will be displayed when supported. No missing curve or point will be invented to complete a figure.
+
+## 13. Reproducible Python workflow engineering
+
+The project is designed as a reusable scientific-data pipeline rather than a set of manually edited figures.
+
+**Planned tools:** Python, pandas, NumPy, Matplotlib, Jupyter Notebook, standard ZIP/hash/path libraries, and suitable validated readers or libraries for specialised formats. Image analysis may use Pillow, scikit-image or OpenCV when warranted. Instrument-specific packages will be selected only after compatibility is tested.
+
+**Engineering principles**
+
+- Keep **raw**, **intermediate** and **processed** files in separate locations.
+- Use relative paths and configuration files, not user-specific Windows folders.
+- Inventory source archives without modifying them; do not rely on arbitrary ZIP extraction order.
+- Develop small, testable Python functions for readers, conversions, schema checks and visualisations.
+- Validate column types, record counts, units, source identifiers and output file integrity.
+- Maintain explicit processing decisions and a `run_manifest.json` containing input fingerprints, execution details and software versions.
+- Save figures and quality-control reports with stable descriptive filenames.
+- Preserve original records and document exclusions, uncertainties and failed extractions.
+- Test completed notebooks using: **Close → Reopen → Restart Kernel → Run All**.
+- Document installation and dependencies so plotting is reproducible rather than quietly omitted when a library is missing.
+
+### Proposed repository layout
 
 ```text
-Original publication and supplementary files
-    ↓  source identifier, file hash, worksheet/cell coordinates
-Immutable source record and scientific metadata
-    ↓  verified composition mapping and original coefficients
-Material composition and computational representation
-    ↓  method, structural assumption, target definition, units
-Reported DFT reference calculation
-    ↓  validated descriptor definitions and composition-level linkage
-Analysis-ready features and targets
-    ↓  documented splitting, modelling and evaluation (optional)
-Independent ML prediction with applicability and uncertainty flags
-    ↓  future extension only; requires new supporting evidence
-Physical processing record → identified specimen → measurement
-    ↓  additional experimental programmes and observation time
-Long-duration validation / performance decision
-```
-
-No link is created merely because two records occupy the same row number or have similar filenames. Proposed future entities do not imply that corresponding experimental data have been collected.
-
-### Proposed core records
-
-| Entity | Essential information | Scientific purpose |
-|---|---|---|
-| `source_record` | source ID, DOI, file hash, sheet, original cell/row, header, raw value | Trace every output back to its origin |
-| `composition` | composition ID, original Ba/Sr/La/Ti/O coefficients, nominal formula, interpretation status | Preserve chemical identity and unresolved representation questions |
-| `calculation` | calculation ID, composition ID, reported method/structure, target, value, unit, evidence status | Distinguish physical computation from prediction and experiment |
-| `descriptor_definition` | feature name, physical meaning, site, calculation/weighting rule, unit, source | Make ML inputs scientifically interpretable |
-| `feature_matrix` | composition ID, validated descriptor values, version, linkage checks | Connect correct input vectors to labelled targets |
-| `qc_finding` | rule, affected record, severity, evidence, reviewer disposition | Ensure issues are documented rather than silently removed |
-| `model_run` *(conditional)* | inputs, split, hyperparameters, random seed, metrics, residuals, model version | Reproduce independently generated predictions |
-| `experimental_record` *(future only)* | batch, specimen, processing conditions, instrument, measurement, protocol | Permit later physical validation without fabricating data |
-
-### Data-quality and evidence policies
-
-- Preserve the original workbook and the precise source-to-output lineage.
-- Keep **unknown, not measured, not attempted and documented failure** as distinct states.
-- Do not promote a candidate to an experimentally proven material without a traceable experiment.
-- Use units, method labels and reference definitions in every quantitative comparison.
-- Keep anomalous or chemically ambiguous records available for scientific review rather than erasing them.
-- Identify whether an artefact is **source data**, a **verified transformation**, a **statistical prediction**, an **experimental observation**, or a **future schema proposal**.
-
-## 7. Implementation roadmap — Phases 00–09
-
-The staged plan delivers scientific data reliability first, followed by analysis and optional machine-learning extensions. **Phase 00 outputs are published above; the remaining phases and outputs are planned unless explicitly identified as completed.**
-
-| Phase | Research purpose and implementation | Expected outputs and completion criterion |
-|---|---|---|
-| **00 — Research scope and source registry** | Register publication and supplementary file identifiers, licence status, acquisition details, SHA-256 hashes, scientific scope and evidence types. | `source_registry.csv`, `source_manifest.json`, `research_scope.md`. Files are identifiable, versioned and unaltered. |
-| **01 — Workbook and computational-data audit** | Inventory `S1`–`S4`, worksheet formulas, headers, cell types, missingness, duplicates, composition keys and shared S2/S3/S4 values; document ambiguities and initial Ti–La findings. | `workbook_inventory.csv`, `column_inventory.csv`, `source_audit_report.md`, exception log. Every observation has a source location. |
-| **02 — Scientific schema and data dictionary** | Model compositions, crystal-site information, descriptors, calculation provenance, evidence status and QC relationships. | `schema_design.md`, `data_dictionary.csv`, `descriptor_dictionary.csv`. Every curated field has semantics, unit where relevant, source and missingness policy. |
-| **03 — Chemical consistency and quality control** | Validate A-site fractions, numeric ranges, identity uniqueness, composition-representation discrepancies and target-field consistency without modifying raw data. | `composition_validation.csv`, `qc_findings.csv`, `composition_representation_review.md`. Issues are explicit and reviewable. |
-| **04 — Standardisation and feature documentation** | Produce consistent typed values, preserve original coefficients and target units, reconcile the 100-to-82 descriptor pipeline, and record all transformations. | `composition_standardised.csv`, `feature_dictionary.csv`, `feature_exclusion_manifest.csv`, `transformation_log.csv`. Source values remain recoverable. |
-| **05 — Record linkage and evidence layer** | Join S2, S3 and S4 by verified composition identities; test feature and energy equality; report missing or conflicting joins; assemble only scientifically supported records. | `linkage_summary.csv`, `linkage_exceptions.csv`, conditional `analysis_ready_evidence.csv`. No implicit row-order matching. |
-| **06 — Exploratory materials-informatics analysis** | Explore Sr/La domain coverage, labelled versus candidate populations, formation-energy distribution, descriptor correlations and chemically notable trends. | `eda_summary.md`, documented figures. All plots identify evidence class, units, sample counts and coverage limitations. |
-| **07 — ML readiness and generalisation strategy** | Test feature–target linkage, leakage, redundancy, split design, chemical-neighbour similarity and potential distribution shift. | `ml_readiness_report.md`, `leakage_audit.csv`, `split_plan.json`. Validation design and data restrictions are defensible before model training. |
-| **08 — Optional predictive modelling and screening** | Train transparent baselines and selected regressors, compare residuals under declared splits, and screen candidates only within documented descriptor and applicability constraints. | Conditional `benchmark_results.csv`, `prediction_audit.csv`, `model_card.md`, `candidate_screening.csv`. Predictions remain distinct from DFT and experimental results. |
-| **09 — Workflow engineering, testing and release** | Consolidate deterministic extraction, stable paths, scripts, dependency management, assertions, manifests and clean-run verification. | `requirements.txt`, reproducibility instructions, automated tests and `run_manifest.json`. A clean environment reproduces all declared outputs. |
-
-### Practical implementation sequence
-
-**Immediate priority: Phases 00–01.** Establish source integrity and reproduce the preliminary structural and 231-record linkage observations in a standalone notebook or script. Subsequent stages should proceed only once source semantics and exception handling are documented. Optional modelling follows scientific validation; advanced experimental integration remains a separate future workstream.
-
-## 8. Planned repository structure
-
-```text
-Project_Machine_learning_and_first-principles_guided_desig/
+thermoresponsive-hydrogel-data-curation/
 ├── README.md
-├── .gitignore
-├── requirements.txt                 # Finalise against executed code
+├── requirements.txt                  # to be added after dependency validation
+├── data/
+│   ├── raw/                          # original files referenced; see source licence
+│   ├── interim/                      # intermediate extraction results
+│   └── processed/                    # standardised, quality-checked outputs
 ├── notebooks/
 │   ├── 00_scope_and_source_registry.ipynb
-│   ├── 01_source_data_audit.ipynb
-│   ├── 02_materials_schema_design.ipynb
-│   ├── 03_composition_and_data_qc.ipynb
-│   ├── 04_standardisation_and_feature_dictionary.ipynb
-│   ├── 05_provenance_and_record_linkage.ipynb
-│   ├── 06_exploratory_materials_analysis.ipynb
-│   ├── 07_ml_readiness_and_leakage_audit.ipynb
-│   ├── 08_optional_ml_benchmarks_and_screening.ipynb
-│   └── 09_reproducibility_and_release.ipynb
-├── src/                             # Reusable, tested extraction and QC logic
-├── data/
-│   ├── raw/                         # Local source files; excluded from Git until rights verified
-│   ├── interim/                     # Audited working records
-│   └── processed/                   # Permissible, validated derived outputs
-├── docs/
-│   ├── data_dictionary.csv
-│   ├── schema_design.md
-│   ├── descriptor_dictionary.csv
-│   └── composition_representation_review.md
-├── reports/
-│   ├── qc/
-│   └── figures/
-├── manifests/
-│   └── source_manifest.json
-└── tests/
+│   ├── 01_source_archive_audit.ipynb
+│   ├── 02_scientific_schema_and_qc.ipynb
+│   ├── 03_polymer_characterisation.ipynb
+│   ├── 04_rheology_and_gelation.ipynb
+│   ├── 05_image_curation_and_printing.ipynb
+│   ├── 06_multimodal_evidence_linkage.ipynb
+│   └── 07_reproducibility_validation.ipynb
+├── src/                              # reusable readers, checks and plot functions
+├── figures/                          # reproducibly generated scientific figures
+├── reports/                          # source audit, QC and HTML summaries
+└── docs/                             # schemas, data dictionary and methods
 ```
 
-The directory tree is a **target structure**, not a claim that these notebooks and files are already implemented. Each artefact will be added as its corresponding phase is completed.
+*The structure above is planned; listed directories and notebooks should not be interpreted as already present in the repository. Large raw data remain attributed to the Zenodo source rather than being duplicated in GitHub without a rights and size review.*
 
-## 9. Reproducibility, scientific limitations and responsible reuse
+## 14. Project roadmap and phase deliverables
 
-### Reproducibility standards
+| Phase | Purpose | Proposed deliverables | Completion criteria |
+|---|---|---|---|
+| **0 — Scope and source registry** | Define the scientific questions, source rights, techniques and study boundaries | Source registry, scope notes, methods-context checklist | All source references and intended analyses documented |
+| **1 — Archive audit** | Enumerate all files and their roles | Inventory, file hashes, integrity checks, format review and archive plots | Reproducible counts for all 13 archives |
+| **2 — Schemas and QC** | Define linked entities and transparent validation rules | Data dictionary, registers, QC log and missingness report | Every core field has a meaning, type, source and validation rule |
+| **3 — Polymer characterisation** | Extract usable SEC, NMR and FTIR evidence | Standardised spectra/chromatograms, provenance and comparison figures | Source values and transformations are verifiable |
+| **4 — Thermogel rheology** | Analyse source-supported temperature, deformation, flow and recovery data | Rheology tables, method registers and graphs | Gelation definitions and experimental conditions retained |
+| **5 — Image curation and printing** | Catalogue and inspect visual evidence; quantify where calibrated | Image inventory, HTML gallery, QC figures, approved image-derived measurements | Quantitative claims supported by scale and validation |
+| **6 — Evidence linkage** | Integrate polymer, batch, treatment, measurements and outcomes | Linkage table, evidence matrices and unresolved-linkage log | No unsupported physical-sample joins |
+| **7 — Workflow validation** | Make extraction, QC and figure generation reproducible | Clean-run reports, manifests, dependency documentation | Complete notebook execution from a fresh session |
+| **8 — Portfolio reporting** | Publish documented results and limitations | Updated README, phase reports, figures and curated evidence catalogue | Every completed claim traceable to a source or reproducible output |
 
-- Use an immutable raw-data copy and source hashes, with no manual edits to publisher files.
-- Capture original spreadsheet coordinates and source versions in all derived tables.
-- Apply deterministic transformations and versioned schemas; distinguish source data from generated outputs.
-- Record Python/package versions, random seeds, split membership, configuration and model settings where relevant.
-- Make validation failures visible in both machine-readable logs and concise scientific reports.
-- Confirm that each published summary and figure can be regenerated from controlled inputs.
-- Require independent review for unresolved chemical interpretations, unexpected data patterns and extrapolative model claims.
+**Phase status:** Source acquisition and preliminary archive inspection have been performed. The end-to-end pipeline and phase deliverables remain **planned / in development**, not completed or independently validated.
 
-### Scope and evidence limitations
+## Phase 0 publication checkpoint
 
-The available materials support a substantial **computational data-curation and workflow-engineering project**. They do **not** alone demonstrate that the proposed ceramics were synthesised, that a self-driving laboratory was operated, that any particular calculation or experiment failed, or that long-term dielectric performance was measured. Proposed experimental schemas, instrument integrations and model-driven calculation requests are **design specifications**, not operational results.
+**Checkpoint:** Phase 0 — Scientific Scope and Source Registry. This stage establishes a reproducible source-registration and scientific-scope baseline using the deposited data associated with *Impact of Sterilization Techniques on the Physicochemical and Biological Properties, and 3D Printability of Thermoresponsive Hydrogels*. It does not claim that SEC molar-mass distributions, NMR/FTIR peak assignments, gelation temperatures, viscoelastic curves, printed-strand geometry or biological outcomes have been independently reconstructed.
 
-A DFT-based formation-energy workflow may help organise candidate research, but it does not replace **phase and defect analysis, controlled processing, physical characterisation, durability testing or deployment validation**. These steps require appropriate additional data and experimental work.
+### Phase 0 research references and original source
 
-### Research attribution and data rights
+| Resource | Reference | Scientific or workflow role |
+|---|---|---|
+| Experimental research article | [Nemati Mahand *et al.*, *Biomacromolecules* (2026)](https://doi.org/10.1021/acs.biomac.6c01032) · [ACS article page](https://pubs.acs.org/doi/10.1021/acs.biomac.6c01032) | Published experimental methods, chemical systems, reported treatments and study limitations. |
+| Original research deposit | [Zenodo 21902628](https://zenodo.org/records/21902628) · [Dataset DOI](https://doi.org/10.5281/zenodo.21902628) | Thirteen original experimental ZIP archives, maintained locally with unchanged original filenames. |
+| Research-data principles | [FAIR Guiding Principles](https://www.go-fair.org/fair-principles/) | Findable source descriptions, accessible provenance, interoperable metadata and reusable workflow design. |
+| GitHub publication guidance | [Adding files to a repository](https://docs.github.com/en/repositories/working-with-files/managing-files/adding-a-file-to-a-repository) | Version-controlled publication of code, figures and scientific documentation. |
 
-The research publications, calculations, figures and supplementary files remain attributable to their original contributors and rights holders, identified in the linked journal records. The ceramic article is described as **CC BY 4.0 except where otherwise noted**; supplementary data may have distinct terms. Before redistributing any original workbook, figure or substantial source extract, the applicable licence and permissions must be verified. The repository should otherwise link to the official sources and publish independently written code, documentation and permissible derived outputs.
+### Phase 0 scientific scope and implemented workflow
 
-This is an **independent research and professional portfolio project**, not an institutional research appointment, official collaboration, endorsement or claim of access to private laboratory systems.
+Phase 0 connects polymer chemistry with source-aware data engineering through the following tasks:
 
-## 10. Current status and next milestone
+1. **Polymer architecture and thermoresponse.** Register Pluronic F127 (PEO–PPO–PEO), pMeOx-b-pnPrOzi and pMeOx-b-pPheOzi-b-pMeOx as distinct materials. Block composition, temperature-dependent assembly, inverse gelation and batch distinctions are scientific metadata, not interchangeable labels.
+2. **Experimental provenance.** Catalogue SEC/GPC, ¹H NMR, FTIR, rheology, sol–gel observations, 3D printing and biological-source archives. Preserve source filenames, checksums and archive-member counts while distinguishing digital records from independently prepared specimens.
+3. **Treatment-context registration.** Preserve control conditions, thermal, UV, ethanol and filtration treatments, including differences between polymer powders, solutions and formulated hydrogels where reported.
+4. **Scientific schema preparation.** Define preliminary metadata requirements for polymer identity, batch, concentration, solvent, processing, test temperature, heating/cooling direction, instrument settings, units and reporting provenance.
+5. **Quality-control design.** Identify rules for missing fields, incompatible numerical representations, ambiguous file-to-sample relationships, duplicate content and limitations of proprietary instrument formats.
+6. **Scientific visualisation.** Generate traceable archive-size and experimental-category figures alongside a conceptual structure–measurement–performance pathway. These figures describe data availability and workflow logic rather than newly analysed experimental measurements.
+7. **Reproducible workflow engineering.** Register inputs and outputs, record package versions, write stable artefact filenames and validate results using a clean Jupyter kernel.
 
-| Workstream | Current status |
-|---|---|
-| Main ceramic paper, supplementary information and research-framework review | **Reviewed for project scoping** |
-| S1–S4 sheet inventory and preliminary 231-record cross-sheet comparisons | **Preliminary checks performed; public reproducible audit pending** |
-| Ti–La composition representation question | **Identified and retained for scientific review** |
-| Phase 00 source registry, manifest, research scope and registration findings | **Completed and published** |
-| Phase 01 workbook audit and automated QC | **Planned; not yet executed** |
-| Canonical schema, full chemical validation, standardised exports and evidence layer | **Planned** |
-| Independent ML validation, benchmarking and candidate screening | **Conditional; not yet executed** |
-| Experimental processing, robotics and long-term performance validation | **Outside the present dataset and project scope** |
+**Phase 0 execution evidence:** The submitted executed notebook registered 13 source archives and 1,119 archive members, produced 12 CSV/JSON output files and three PNG figures, and recorded 10 passed structural validation checks. These counts describe the digital archive and software checks; they do **not** demonstrate that 1,119 independent specimens or measurements were analysed. Fresh-kernel reproduction remains dependent on access to the same source archives and a compatible Python environment.
 
-**Next milestone:** develop the Phase 01 executable workbook audit, reproduce the S1–S4 workbook inventory and explicit S2/S3/S4 consistency checks, and publish a transparent findings register before beginning data standardisation or predictive modelling.
+### Phase 0 core notebook and HTML reports
+
+| Resource | Canonical repository location | Access |
+|---|---|---|
+| **Executable Python/Jupyter notebook** | `00_scope_and_source_registry.ipynb` | [Open Phase 0 notebook](https://github.com/tehsongxuan/thermoresponsive-hydrogel-data-curation/blob/main/00_scope_and_source_registry.ipynb) |
+| **Published Phase 0 HTML report (executed notebook export)** | `reports/phase0/00_scope_and_source_registry.html` | [Open HTML source](https://github.com/tehsongxuan/thermoresponsive-hydrogel-data-curation/blob/main/reports/phase0/00_scope_and_source_registry.html) · [View rendered report in browser](https://htmlpreview.github.io/?https://github.com/tehsongxuan/thermoresponsive-hydrogel-data-curation/blob/main/reports/phase0/00_scope_and_source_registry.html) |
+| **Separate generated scientific scope summary** (not yet published) | `reports/phase0/phase0_scientific_scope_report.html` | Generated summary remains separate from the executed notebook HTML; a direct link should be enabled after that file is uploaded. |
+
+The Jupyter notebook contains the executable Python cells and scientific explanations. The published `00_scope_and_source_registry.html` file is the executed notebook export, displaying the code, outputs and scientific interpretation. The separately generated `phase0_scientific_scope_report.html` is a distinct scientific summary and is not linked as published until uploaded. Browser rendering uses a third-party HTML preview service; the corresponding GitHub links remain the canonical references. All figures used by the generated scientific report are expected under `figures/phase0/` so relative image paths can resolve.
+
+### Phase 0 output inventory and direct file links
+
+The following paths correspond to outputs of the Phase 0 notebook. File links are **publication targets, not a statement that the files are already present on GitHub**. Only reviewed outputs should be committed after source-reuse and private-local-path checks.
+
+#### A. Scientific source and metadata registers
+
+| Scientific record | Direct GitHub file link | Role |
+|---|---|---|
+| `source_registry.csv` | [Open file](https://github.com/tehsongxuan/thermoresponsive-hydrogel-data-curation/blob/main/data/processed/phase0/source_registry.csv) | Source publication, Zenodo DOI and data-origin register. |
+| `archive_registry.csv` | [Open file](https://github.com/tehsongxuan/thermoresponsive-hydrogel-data-curation/blob/main/data/processed/phase0/archive_registry.csv) | Thirteen original ZIP archives, scientific categories, sizes and member counts. |
+| `polymer_system_register.csv` | [Open file](https://github.com/tehsongxuan/thermoresponsive-hydrogel-data-curation/blob/main/data/processed/phase0/polymer_system_register.csv) | Polymer identity, block architecture and thermoresponsive context. |
+| `published_batch_descriptions.csv` | [Open file](https://github.com/tehsongxuan/thermoresponsive-hydrogel-data-curation/blob/main/data/processed/phase0/published_batch_descriptions.csv) | Publication-derived polymer-batch descriptions; not newly measured batches. |
+| `published_treatment_register.csv` | [Open file](https://github.com/tehsongxuan/thermoresponsive-hydrogel-data-curation/blob/main/data/processed/phase0/published_treatment_register.csv) | Documented sterilisation treatments, stages and reported conditions. |
+| `experimental_technique_register.csv` | [Open file](https://github.com/tehsongxuan/thermoresponsive-hydrogel-data-curation/blob/main/data/processed/phase0/experimental_technique_register.csv) | Characterisation methods, expected evidence and acquisition context. |
+| `research_questions.csv` | [Open file](https://github.com/tehsongxuan/thermoresponsive-hydrogel-data-curation/blob/main/data/processed/phase0/research_questions.csv) | Scientific questions connecting polymer chemistry, processing and evidence. |
+| `metadata_requirements.csv` | [Open file](https://github.com/tehsongxuan/thermoresponsive-hydrogel-data-curation/blob/main/data/processed/phase0/metadata_requirements.csv) | Candidate scientific metadata, units and data-validation expectations. |
+| `preliminary_qc_rules.csv` | [Open file](https://github.com/tehsongxuan/thermoresponsive-hydrogel-data-curation/blob/main/data/processed/phase0/preliminary_qc_rules.csv) | Preliminary, reviewable quality-control checks. |
+| `phase0_input_verification.csv` | [Open file](https://github.com/tehsongxuan/thermoresponsive-hydrogel-data-curation/blob/main/data/processed/phase0/phase0_input_verification.csv) | Archive file-identity checks and input integrity. |
+| `phase0_run_manifest.json` | [Open file](https://github.com/tehsongxuan/thermoresponsive-hydrogel-data-curation/blob/main/data/processed/phase0/phase0_run_manifest.json) | Processing provenance, source references and software versions. |
+| `phase0_validation_summary.csv` | [Open file](https://github.com/tehsongxuan/thermoresponsive-hydrogel-data-curation/blob/main/data/processed/phase0/phase0_validation_summary.csv) | Phase 0 structural and output-validation results. |
+
+#### B. Phase 0 scientific visualisations
+
+| Figure | Direct GitHub figure link | Interpretation |
+|---|---|---|
+| `phase0_archive_sizes.png` | [View figure](https://github.com/tehsongxuan/thermoresponsive-hydrogel-data-curation/blob/main/figures/phase0/phase0_archive_sizes.png) | Compressed-source archive-size comparison; size does not indicate independent sample count. |
+| `phase0_scientific_category_coverage.png` | [View figure](https://github.com/tehsongxuan/thermoresponsive-hydrogel-data-curation/blob/main/figures/phase0/phase0_scientific_category_coverage.png) | File-category representation across polymer-characterisation and application evidence. |
+| `phase0_scientific_evidence_pathway.png` | [View figure](https://github.com/tehsongxuan/thermoresponsive-hydrogel-data-curation/blob/main/figures/phase0/phase0_scientific_evidence_pathway.png) | Conceptual relationship between polymer architecture, treatment, experimental characterisation and material performance; not a verified specimen-level linkage. |
+
+The figures must be interpreted with their dataset, measurement and sample-level limitations. File-count charts do not establish representative experimental sampling. The conceptual evidence pathway illustrates the intended scientific data model and is not a confirmed same-specimen provenance graph.
+
+### Phase 0 environment and reproducibility
+
+The locally configured environment is named **`Python (Thermogel Phase 0)`** and corresponds to the Conda environment `thermogel-phase0`. The project uses Python and scientific packages including pandas, NumPy, Matplotlib, Jupyter/ipykernel and nbclient. Package compatibility must be checked within the selected environment; installing into the unrelated Anaconda base environment is not required.
+
+- [Project dependency specification](https://github.com/tehsongxuan/thermoresponsive-hydrogel-data-curation/blob/main/requirements.txt) — dependency manifest for a reproducible installation, when added to the repository.
+- [Git exclusion rules](https://github.com/tehsongxuan/thermoresponsive-hydrogel-data-curation/blob/main/.gitignore) — prevents large raw archives, temporary outputs, checkpoints and private environment artefacts from being inadvertently committed, when added to the repository.
+
+The executable Phase 0 notebook currently resides at the **repository root**, consistent with the working Jupyter directory. The separate `notebooks/` layout in the earlier proposed repository plan can be adopted later, provided the published notebook link and any relative paths are updated together.
+
+**Required local source layout:**
+
+```text
+thermoresponsive-hydrogel-data-curation/
+├── README.md
+├── 00_scope_and_source_registry.ipynb
+├── data/
+│   ├── raw/
+│   │   └── zenodo_21902628/
+│   │       └── [the 13 original Zenodo ZIP archives, unchanged]
+│   └── processed/
+│       └── phase0/
+│           └── [generated CSV and JSON records]
+├── figures/
+│   └── phase0/
+│       └── [three generated PNG figures]
+└── reports/
+    └── phase0/
+        ├── 00_scope_and_source_registry.html      # published executed notebook HTML
+        └── phase0_scientific_scope_report.html # separately generated summary, when uploaded
+```
+
+**Execution procedure:** Open `00_scope_and_source_registry.ipynb`, select **Python (Thermogel Phase 0)**, and run **Kernel → Restart Kernel and Run All Cells**. The 13 original ZIP files must remain in `data/raw/zenodo_21902628/`. Execution should regenerate the declared named outputs without relying on previously defined notebook variables or manually extracted source archives. The `phase0_validation_summary.csv` and `phase0_run_manifest.json` should be reviewed after each run; software validation does not establish the experimental validity of unpublished measurements or cross-technique physical-sample relationships.
+
+### Phase 0 GitHub publication guidance
+
+The initial public checkpoint comprises the updated `README.md`, the single canonical Jupyter notebook, the generated scientific report, three independently created Phase 0 figures and the documented environment. The supporting Phase 0 CSV/JSON registers are linkable and useful for scientific transparency **after their content, source permissions and local-path exposure have been reviewed**. Public-access status must not be confused with permission to redistribute third-party deposited files.
+
+The **13 original Zenodo ZIP files** are intentionally not reproduced in the GitHub repository. The associated journal PDF, source image collections, raw proprietary instrument projects, downloaded software environments and notebook checkpoint directories likewise remain local unless reuse permission and publication necessity are established. All source records remain attributable to their original researchers via the DOI references above.
+
+**Phase 0 handoff:** The registered sources, metadata requirements, treatment definitions, preliminary QC rules and documented limitations establish the starting point for **Phase 1 — Source Archive Audit**. Later phases may implement full archive-member inventories, scientific schema mapping, verified numerical extraction, imaging quality control and evidence-led links, without treating matching filenames as proof of specimen identity.
 
 ---
 
-## References
+## 15. Known limitations and scientific safeguards
 
-**Primary ceramic research and computational dataset**  
-**[*Machine learning and first-principles guided design of BaTiO₃-based materials for capacitor applications*](https://doi.org/10.1063/5.0314819)**. *Journal of Applied Physics* **139**, 064101 (2026).  
-[Official supplementary materials and datasets](https://doi.org/10.60893/figshare.jap.c.8234602).
+1. **Proprietary projects:** OriginLab `.opju` files may require authorised Origin export or a proven compatible extraction method. A preview graph is not equivalent to a validated numeric export.
+2. **Batch effects:** Different polymer batches and calibration dates can affect apparent cross-treatment differences and must be documented.
+3. **Method differences:** SEC solvents, flow settings, instrument conditions and analysis methods may vary; comparisons need protocol-level checks.
+4. **Thermal history:** Thermogel measurements depend on concentration, medium, heating/cooling direction, ramp rate and equilibration history.
+5. **Missing identities:** Not all filenames provide sufficient evidence to connect an instrument run or image to a unique physical specimen.
+6. **Spectral ambiguity:** Automatic peak detection is not a substitute for chemical assignment, baseline evaluation or independent method validation.
+7. **Microscopy limits:** Optical/stereo-microscopy photographs are not SEM/TEM micrographs; quantitative geometry requires calibration and suitable resolution.
+8. **Biological interpretation:** Photographic microbial-growth assessments do not establish formal sterility assurance or clinical suitability.
+9. **Sample size:** Hundreds of files or tens of thousands of spectral points do not imply an equivalent number of independent experimental samples.
+10. **Causal interpretation:** Correlation between treatment, spectroscopy, rheology and printing outcomes does not by itself identify a unique molecular mechanism.
 
-**Research framework for trustworthy and process-aware materials discovery**  
-**[*Predicting Faster Than We Can Make: Polymer-Specific Process Physics as a Frontier for Autonomous Soft-Matter Discovery*](https://doi.org/10.1002/marc.70420)**. *Macromolecular Rapid Communications* (2026).
+Scientific uncertainty will remain visible in the curated outputs. The intention is to produce **defensible evidence**, not artificially complete tables.
 
-*Full publication metadata and complete author lists are provided by the original journal DOI records.*
+## 16. Expected value and future extension
+
+The intended result is a **reusable, auditable materials-data workflow** able to move from original heterogeneous research files to clearly defined, quality-checked and source-linked experimental records.
+
+It will demonstrate practical capabilities in:
+
+- Polymer-science-aware metadata and schema design.
+- Numerical spectroscopy and rheology data processing.
+- Unit and measurement-context validation.
+- Image-data curation and conditional quantitative image analysis.
+- Experimental provenance and batch-aware record linkage.
+- Automated scientific visualisation and reproducible Python execution.
+- Transparent reporting of unresolved scientific-data limitations.
+
+Future work could extend the approach to appropriately sourced **SEM, TEM, cryo-TEM, scattering or additional thermogel formulation datasets**, and eventually support cross-study comparison or carefully validated machine-learning studies. Such modelling is **outside the present project scope** and would require sufficient independent, comparable and traceable experimental records.
+
+## 17. Acknowledgements
+
+This independent project uses data deposited by **Saba Nemati Mahand, Saumya Palliyawaththage, J. Maurice Pütz, Parsa Amin, Ekaterina Takmakova and Robert Luxenhofer**, with the related findings published in *Biomacromolecules* (2026).
+
+Please cite the **[original article](https://doi.org/10.1021/acs.biomac.6c01032)** and **[Zenodo dataset](https://doi.org/10.5281/zenodo.21902628)** when using the original research materials. Scientific credit for the experiments and source datasets remains with their authors.
+
+
 
 
